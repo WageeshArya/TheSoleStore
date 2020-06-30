@@ -1,0 +1,30 @@
+{
+  "name": "the-sole-store",
+  "version": "1.0.0",
+  "description": "An online shoe store",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "TheSoleStore"
+  },
+  "keywords": [
+    "CRUD",
+    "React",
+    "NodeJS",
+    "Express",
+    "MongoDB"
+  ],
+  "author": "Wageesh Arya",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.20",
+    "nodemon": "^2.0.4"
+  }
+}
