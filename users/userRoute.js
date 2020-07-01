@@ -4,10 +4,9 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-const User = require('../models/userModel');
-const Product = require('../models/productModel');
-const Order = require('../models/orderModel');
-const { response } = require('../../app');
+const User = require('./userModel');
+const adminAuth = require('../auth/adminAuth');
+const checkAuth = require('../auth/checkAuth');
 
 router.get('/', (req, res, next) => {
   User.find().exec().then(docs => {
@@ -28,7 +27,7 @@ router.get('/', (req, res, next) => {
   })
 })
 
-router.get('/:userId', (req, res, next) => {
+router.get('/:userId', checkAuth, (req, res, next) => {
   User.findById(req.params.userId)
   .exec()
   .then(user => {
@@ -140,7 +139,7 @@ router.post('/signup', (req, res, next) => {
   })
 })
 
-router.delete('/:userId', (req, res, next) => [
+router.delete('/:userId', adminAuth, (req, res, next) => [
   User.deleteOne({_id:req.param.userId}).exec()
   .then(result => {
     res.status(200).json({

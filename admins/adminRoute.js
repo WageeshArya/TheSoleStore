@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const Admin = require('../models/adminModel');
+const Admin = require('./adminModel');
 
 //GET ALL ADMINS
 router.get('/', (req, res, next) => {

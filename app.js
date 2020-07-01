@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
-const productRoute = require('./API/routes/productRoute');
-const orderRoute = require('./API/routes/orderRoute');
-const userRoute = require('./API/routes/userRoute');
-const adminRoute = require('./API/routes/adminRoute');
+const productRoute = require('./products/productRoute');
+const orderRoute = require('./orders/orderRoute');
+const userRoute = require('./users/userRoute');
+const adminRoute = require('./admins/adminRoute');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

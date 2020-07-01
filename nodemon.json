@@ -1,6 +1,7 @@
 {
     "env": {
       "MONGODB_ATLAS_PASS": "ttVpp8BhlFjhbJkq",
-      "JWT_SECRET_KEY": "rgfadjfhbwuic19129ewfb"
+      "JWT_SECRET_KEY": "rgfadjfhbwuic19129ewfb",
+      "ADMIN_SECRET_KEY": "wrglifdbc2faf3123sdsa"
     }
 }
