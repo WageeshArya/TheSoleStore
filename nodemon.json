@@ -1,5 +1,6 @@
 {
     "env": {
-      "MONGODB_ATLAS_PASS": "ttVpp8BhlFjhbJkq"
+      "MONGODB_ATLAS_PASS": "ttVpp8BhlFjhbJkq",
+      "JWT_SECRET_KEY": "rgfadjfhbwuic19129ewfb"
     }
 }

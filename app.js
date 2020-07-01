@@ -2,12 +2,15 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
 const productRoute = require('./API/routes/productRoute');
-const orderRoutes = require('./API/routes/orderRoutes');
+const orderRoute = require('./API/routes/orderRoute');
+const userRoute = require('./API/routes/userRoute');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/products', productRoute);
-app.use('/orders', orderRoutes);
+app.use('/orders', orderRoute);
+app.use('/users', userRoute);
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin','*');

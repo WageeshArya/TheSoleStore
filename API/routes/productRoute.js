@@ -34,11 +34,12 @@ const upload = multer({
 });
 
 router.get('/', (req, res, next) => {
-    Product.find().select('name price').exec().then(docs => {
+    Product.find().select('_id name price').exec().then(docs => {
         res.status(200).json({
             count: docs.length,
             products: docs.map(doc => {
                 return {
+                    _id: doc._id,
                     name: doc.name,
                     price: doc.price
                 };
