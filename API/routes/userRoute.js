@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/userModel');
 const Product = require('../models/productModel');
 const Order = require('../models/orderModel');
+const { response } = require('../../app');
 
 router.get('/', (req, res, next) => {
   User.find().exec().then(docs => {
@@ -21,6 +22,40 @@ router.get('/', (req, res, next) => {
     }
     res.status(200).json(response);
   }).catch(err => {
+    res.status(500).json({
+      error: err
+    })
+  })
+})
+
+router.get('/:userId', (req, res, next) => {
+  User.findById(req.params.userId)
+  .exec()
+  .then(user => {
+    console.log(user.orders.length);
+    if(user.orders.length >= 1){
+      const response = {
+      _id: user._id,
+      email: user.email,
+      orders: {
+        count: user.orders.length,
+        allOrderIds: user.orders
+      }
+    }
+      console.log(response);
+      res.status(200).json(response);
+    }
+    else {
+      const response = {
+       _id: user._id,
+       email: user.email,
+       orders: []
+      }
+      res.status(200).json(response);
+    }
+  })
+  .catch(err => {
+    console.log(err);
     res.status(500).json({
       error: err
     })
@@ -104,6 +139,7 @@ router.post('/signup', (req, res, next) => {
     }
   })
 })
+
 router.delete('/:userId', (req, res, next) => [
   User.deleteOne({_id:req.param.userId}).exec()
   .then(result => {

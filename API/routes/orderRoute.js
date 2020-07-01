@@ -4,14 +4,14 @@ const router = express.Router();
 
 const Product = require('../models/productModel');
 const Order = require('../models/orderModel');
-
+const User = require('../models/userModel');
 router.get('/', (req, res, next) => {
   res.status(200).json({
     message: 'GET for orders'
   })
 });
 
-router.post('/', (req, res, next) => {
+router.post('/:userId', (req, res, next) => {
   Product.findById(req.body.productId)
   .exec()
   .then(result => {
@@ -24,6 +24,9 @@ router.post('/', (req, res, next) => {
       order
         .save()
         .then(result => {
+          console.log(order);
+          User.findOneAndUpdate({_id: req.params.userId}, {$push: {orders: order}}).then(result => console.log(result))
+
           res.status(201).json({
             _id: order._id,
             productId: order.productId,
