@@ -1,17 +1,18 @@
 const Product = require('./productModel');
-
+/* count: docs.length,
+products: docs.map(doc => {
+    return {
+        _id: doc._id,
+        name: doc.name,
+        price: doc.price
+    };
+})
+}*/
 exports.getAllProducts = (req, res, next) => {
   Product.find().select('_id name price').exec().then(docs => {
-      res.status(200).json({
-          count: docs.length,
-          products: docs.map(doc => {
-              return {
-                  _id: doc._id,
-                  name: doc.name,
-                  price: doc.price
-              };
-          })
-      });
+      console.log(docs);
+        res.status(200);
+        res.send({products: JSON.stringify(docs)});
   }).catch(err => {
       console.log(err);
       res.status(500).json({
@@ -22,6 +23,7 @@ exports.getAllProducts = (req, res, next) => {
 
 exports.getProduct = (req, res, next) => {
   const id = req.params.productId;
+  console.log(id);
   Product
   .findById(id)
   .select('name price')
