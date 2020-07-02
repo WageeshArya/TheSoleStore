@@ -1,0 +1,32 @@
+.navbar {
+  background-color: #2d3436;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  line-height: 30px;
+  position: fixed;
+  text-align: center;
+  width: 150px;
+  color: white;
+  text-align: left;
+}
+
+.brand {
+  margin: 1rem;
+}
+
+.navbar > ul > li > a {
+  text-decoration: none;
+  color: white;
+}
+
+.forUsers {
+  background-color: #2d3436;
+  display: flex;
+  flex-direction:column;
+  justify-content: flex-end;
+  height: 100vh;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
