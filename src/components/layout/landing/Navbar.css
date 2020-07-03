@@ -1,32 +1,74 @@
 .navbar {
-  background-color: #2d3436;
+  display: grid;
+  grid-template-rows: repeat(2,1fr);
+  background-color: #dddddd;
   font-family: 'Poppins', sans-serif;
-  font-size: 2rem;
+  font-size: 2.75rem;
+  font-weight: 800;
   line-height: 30px;
   position: fixed;
   text-align: center;
-  width: 150px;
-  color: white;
+  color: #474554;
   text-align: left;
+  height: 100vh;
+  width: 150px;
 }
 
 .brand {
   margin: 1rem;
+  width: 100%;
 }
 
 .navbar > ul > li > a {
-  text-decoration: none;
-  color: white;
+  color: black;
+  transition: all 0.2s linear;
+}
+
+.navbar > ul > li :hover {
+  font-size: 1.75rem;
 }
 
 .forUsers {
-  background-color: #2d3436;
-  display: flex;
-  flex-direction:column;
-  justify-content: flex-end;
-  height: 100vh;
+  z-index: 2;
+  display: grid;
+  grid-template-rows: repeat(2,1fr);
+  width: 100%;
+  font-weight: 400;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-end;
+}
+.icons > li {
+  margin: 5rem auto;
+}
+
+.forUsers :first-child {
+  margin: 0 auto;
+}
+
+.forUsers :first-child > li > a > img {
+  width: 30px;
+  height: 30px;
+  transition: all 0.1s linear;
+}
+
+.forUsers :first-child > li > a :hover {
+  transform: scale(1.2);
+}
+
+.icons > li > a > img {
+  width: 40px;
+  height: 40px;
+  transition: all 0.1s linear;
+}
+
+.icons > li > a :hover {
+  transform: scale(1.2);
 }
 
