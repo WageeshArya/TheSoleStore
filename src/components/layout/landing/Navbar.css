@@ -1,7 +1,7 @@
 .navbar {
   display: grid;
   grid-template-rows: repeat(2,1fr);
-  background-color: #dddddd;
+  background-color: #BBD4DE;
   font-family: 'Poppins', sans-serif;
   font-size: 2.75rem;
   font-weight: 800;
@@ -11,12 +11,68 @@
   color: #474554;
   text-align: left;
   height: 100vh;
-  width: 150px;
+  width: 8vw;
+  transition: all 0.1s;
+}
+
+.extendNav {
+  width: 14vw;
+  text-align: left;
+  animation-name: example;
+  animation-duration: 0.1s;
+}
+
+@keyframes example {
+  from {
+    width: 8vw;
+  }
+  to {
+    width: 14vw;
+  }
+}
+
+.homeBtn {
+  display: flex;
+}
+
+.extendHome {
+  display: block;
+}
+
+.extendHome > ul { 
+  list-style: none;
+  font-size: 1rem;
+} 
+
+.extendHome > ul > li > a {
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+}
+
+.extendHome > ul > li :hover {
+  font-weight: 600;
+}
+
+.reveal {
+  display: none;
+  font-size: 1rem;
+  color: black;
+}
+
+.reveal > ul {
+  list-style: none;
+}
+
+.reveal > ul > li > a {
+  text-decoration: none;
 }
 
 .brand {
-  margin: 1rem;
-  width: 100%;
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 3rem auto;
 }
 
 .navbar > ul > li > a {

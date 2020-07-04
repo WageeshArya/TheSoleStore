@@ -2,6 +2,99 @@ body {
   margin: 0;  
 }
 .home {
+  width: 92vw;
+  float: right;
+  height: 100vh;
   display: grid;
-  background-color: red;
+  grid-template-columns: 2fr 1fr;
+}
+
+.group-1 {
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+}
+
+.group-2 { 
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.branding {
+  background-color: #B8FFDC;
+}
+
+.brandName {
+  font-size: 15rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  line-height: 10rem;
+  margin-left: 7.5rem;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  border-right: 20px solid #81C6A5;
+}
+.branding :nth-child(2) {
+  font-weight: 400;
+  font-family: monospace,sans-serif;
+  font-size: 1.1rem;
+  margin-left: 8rem;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.products :first-child {
+  background-color: #FFDF8D;
+}
+.products :nth-child(2) {
+  background-color: #FFD2BD;
+}
+.products :nth-child(3) {
+  background-color: #00C6CF;
+}
+.products :nth-child(4) {
+  background-color: #FFD3E3;
+}
+
+.viewProducts {
+  background-color: #C5F9EE;
+  font-family: 'Poppins', sans-serif;
+}
+
+.viewProducts > div {
+  margin-left: 8rem;
+}
+
+.viewProducts > div > p {
+  font-size: 2rem;
+  font-weight: 600;
+  text-decoration: underline;
+} 
+
+.productsBtn {
+  display: block;
+  height: 60px;
+  width: 150px;
+  float: right;
+  margin-right: 10rem;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  line-height: 60px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  background-color: #99DBE3;
+  border: 2px solid black;
+  transition: all 1s;
+}
+
+.productsBtn :hover {
+  box-shadow: black;
+}
+
+.something {
+  background-color: #C4C4C4;
 }
