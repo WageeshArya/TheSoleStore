@@ -9,7 +9,7 @@ products: docs.map(doc => {
 })
 }*/
 exports.getAllProducts = (req, res, next) => {
-  Product.find().select('_id name price').exec().then(docs => {
+  Product.find().select('_id name price productImage description').exec().then(docs => {
       console.log(docs);
         res.status(200);
         res.send({products: JSON.stringify(docs)});
