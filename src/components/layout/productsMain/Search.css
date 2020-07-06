@@ -1,0 +1,63 @@
+.search {
+  width: 100%;
+  background-color: #EEEEEE;
+}
+
+.searchgrid {
+  display:grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+  grid-gap: 2rem;
+  padding: 4rem;
+}
+
+.searchbar {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 7px solid black;
+  height: 100%;
+  font-size: 4rem;
+  font-family: 'Poppins',sans-serif;
+  font-weight: 800;
+  background-color: #EEEEEE;
+}
+
+.sort {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 7px solid black;
+  height: 100%;
+  font-size: 3rem;
+  font-family: 'Poppins',sans-serif;
+  font-weight: 800;
+  background-color: #EEEEEE;
+}
+
+.company {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 7px solid black;
+  height: 100%;
+  font-size: 3rem;
+  font-family: 'Poppins',sans-serif;
+  font-weight: 800;
+  background-color: #EEEEEE;
+}
+
+.findBtn {
+  width: 100%;
+  border: none;
+  height: 100%;
+  font-size: 2rem;
+  font-family: 'Poppins',sans-serif;
+  font-weight: 800;
+  background-color: #65FBD2;
+  outline: none;
+  transition: all 0.5s ease;
+}
+
+.findBtn :hover {
+  background-color: #39D6C8;
+}

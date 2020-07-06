@@ -1,0 +1,10 @@
+.shoes {
+  width: 92vw;
+  float: right;
+}
+
+.productsTitle {
+  margin: 2rem 4rem 2rem 4rem;
+  font-size: 3rem;
+  font-family: 'Archivo',sans-serif;
+}
