@@ -9,7 +9,7 @@ export const getProducts = () => async (dispatch) => {
     dispatch({
       type: GET_PRODUCTS,
       payload: data
-    })
+    });
   }
   catch(err) {
     dispatch({
@@ -20,6 +20,7 @@ export const getProducts = () => async (dispatch) => {
 }
 
 export const setLoading = () => {
+  console.log('Loading true');
   return {
     type: SET_LOADING
   }

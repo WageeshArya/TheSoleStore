@@ -1,6 +1,6 @@
 import {GET_PRODUCTS, SET_LOADING, SET_ERROR} from '../actions/types';
 const initialState = {
-  products: null,
+  products: [],
   loading: false,
   error: null
 }
@@ -8,6 +8,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_PRODUCTS: 
+    console.log(action.payload);
       return {
         ...state,
         products: action.payload,

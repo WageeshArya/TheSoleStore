@@ -10,14 +10,14 @@ export const Search = () => {
           </div>
           <div>
             <select className="sort" name="sort">
-              <option selected disabled>Sort by</option>
+              <option disabled>Sort by</option>
               <option value="asc-price">Lowest prices first</option>
               <option value="des-price">Higest prices first</option>
             </select>
           </div>
           <div>
             <select className="company" name="company">
-              <option selected disabled>Brand</option>
+              <option disabled>Brand</option>
             </select>
           </div>
           <div>
