@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 import { getProducts, setLoading } from '../../../actions/productsActions';
 import ProductsArea from './ProductsArea';
-import ProductCard from './ProductCard';
 import Navbar from '../landing/Navbar';
 import Search from './Search';
 export const Shoes = (props) => {
@@ -20,8 +19,7 @@ export const Shoes = (props) => {
 
     console.log(props.products);
     console.log(props.loading);
-
-    // console.log(JSON.parse(props.products.products));
+    
   }, []); 
   if(props.loading) {
     return (
@@ -36,7 +34,7 @@ export const Shoes = (props) => {
         <div className="shoes">
           <Search />
           <h1 className="productsTitle">Our Selection</h1>
-            {/* <ProductsArea loading={props.loading} products={JSON.parse(props.products.products)} />  */}
+            <ProductsArea loading={props.loading} products={props.products} /> 
             {/* {
               props.products.map(product => (
                 <ProductCard key={product._id} product={product} />

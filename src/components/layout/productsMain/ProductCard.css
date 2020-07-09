@@ -1,3 +1,99 @@
 .productCard {
-  background-color: #444444;
+  /* background-image: linear-gradient(to right top, #edfcff, #cce3ed, #b1c9dd, #9daecb, #9092b7); */
+  /* border-radius: 10px; */
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+}
+
+.productCard:hover {
+  background-color: #eee;
+}
+
+.cardTop {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+h1{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  display: block;
+  margin: 1rem 0 0 1rem;
+}
+h2 {
+  margin: 0 0 1rem 1rem;
+  padding-top: 0;
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
+  color: gray;
+  font-size: 1rem;
+}
+
+.productImage {
+  display: block;
+  width: 325px;
+  height: 325px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.5s ease;
+}
+
+img {
+  display: block;
+  width: 275px;
+  height: 275px;
+  margin: 0 auto;
+}
+
+.productImage:hover {
+  transform: rotate(30deg) scale(1.4);
+  -webkit-transform: rotate(30deg) scale(1.4);
+}
+
+.atc {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  color: white;
+  height: 3rem;
+  line-height: 3rem;
+  text-decoration: none;
+  text-align: center;
+  background-color: #718AF4;
+  transition: all 0.2s ease;
+  border-radius: 0px 0px 0px 10px;
+}
+
+.atc:hover {
+  background-color: #002278;
+  cursor: pointer;
+}
+
+.cardBottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.view {
+  font-family: 'Karla',sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+  margin: 2rem;
+  transition: all 0.2s ease;
+}
+
+.view:hover {
+  color: rgb(122, 122, 122);
+  font-size: 1.75rem;
+}
+
+.price {
+  float: right;
+  margin: 0rem 2rem 2rem 0;
+  text-align: right;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
 }

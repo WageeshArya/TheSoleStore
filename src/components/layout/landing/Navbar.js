@@ -1,4 +1,5 @@
 import React , { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../../../icons/logo.png';
 import login from '../../../icons/login.png';
@@ -17,7 +18,7 @@ export const Navbar = () => {
   return (
     <div className={`navbar ${homeHovered ? 'extendNav' : ''}`}>
         <div>
-          <a href="#"><img src={logo}  className="brand" alt="logo"/></a>
+          <Link to="/"><img src={logo}  className="brand" alt="logo"/></Link>
         </div>
       <ul className="forUsers">
         <div>

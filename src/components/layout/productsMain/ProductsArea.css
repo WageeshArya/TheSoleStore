@@ -1,0 +1,7 @@
+.productsArea {
+  margin: 6rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+  grid-row-gap: 3rem;
+}

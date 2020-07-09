@@ -1,9 +1,9 @@
 import React from 'react';
 import ProductCard from './ProductCard';
+import product from './Product';
+import './ProductsArea.css';
 
 export const ProductsArea = ({products, loading}) => {
-
-  const all_products = JSON.parse(products);
 
   if(loading) {
     return (
@@ -13,7 +13,7 @@ export const ProductsArea = ({products, loading}) => {
   else {
     console.log(products);
     return (
-      <div>
+      <div className="productsArea">
         {
           products.map(product => (
             <ProductCard key={product._id} product={product} />
