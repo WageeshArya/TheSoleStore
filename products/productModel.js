@@ -11,20 +11,24 @@ const productSchema = mongoose.Schema({
         required: true
     },
     company: {
-        type: String
+        type: String,
+        required: true
     },
     description: {
-        type: String
+        type: String,
+        required: true
     },
     year: {
-        type: Number
+        type: Number,
+        required: true
     },
     productImage: {
         type: String,
         required: true
     },
-    productFullImage: {
-        type: String
+    fullProductImage: {
+        type: String,
+        required: true
     }
 })
 

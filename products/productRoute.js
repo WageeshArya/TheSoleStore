@@ -39,7 +39,7 @@ router.get('/', productController.getAllProducts);
 
 router.get('/:productId', productController.getProduct);
 
-router.post('/', adminAuth, upload.single('productImage'), productController.createNewProduct);
+router.post('/', /*adminAuth,*/ upload.any(), productController.createNewProduct);
 
 router.patch('/:productId', adminAuth, productController.updateProduct );
 

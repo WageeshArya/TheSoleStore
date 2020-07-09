@@ -1,4 +1,5 @@
 const Product = require('./productModel');
+const mongoose = require('mongoose');
 /* count: docs.length,
 products: docs.map(doc => {
     return {
@@ -9,7 +10,7 @@ products: docs.map(doc => {
 })
 }*/
 exports.getAllProducts = (req, res, next) => {
-  Product.find().select('_id name price productImage description').exec().then(docs => {
+  Product.find().select('_id name price company year productImage fullProductImage description').exec().then(docs => {
       console.log(docs);
         res.status(200);
         res.send({products: JSON.stringify(docs)});
@@ -44,9 +45,10 @@ exports.createNewProduct = (req, res, next) => {
       description: req.body.description,
       company: req.body.company,
       year: req.body.year,
-      productImage: req.file.path
-  })
-  console.log(req.file);
+      productImage: req.files[0].path,
+      fullProductImage: req.files[1].path
+  });
+  console.log(req.files);
   product
       .save()
       .then(result => {

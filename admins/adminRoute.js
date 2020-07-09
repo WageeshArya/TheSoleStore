@@ -2,10 +2,14 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+const AdminAuth = require('../auth/adminAuth');
 const Admin = require('./adminModel');
+const adminAuth = require('../auth/adminAuth');
 
 //GET ALL ADMINS
-router.get('/', (req, res, next) => {
+router.get('/', AdminAuth, (req, res, next) => {
   Admin.find()
   .select('_id email')
   .exec()
@@ -29,7 +33,7 @@ router.get('/', (req, res, next) => {
   });
 });
 //GET PARTICULAR ADMIN
-router.get('/:adminId', (req, res, next) => {
+router.get('/:adminId', AdminAuth, (req, res, next) => {
   Admin.findById(req.params.adminId).exec()
   .then(result => {
     console.log(result);
@@ -45,6 +49,47 @@ router.get('/:adminId', (req, res, next) => {
     })
   });
 });
+
+//ADMIN LOGIN
+router.post('/login', (req, res, next) => {
+  Admin.find({email: req.body.email}).exec()
+  .then(admin => {
+    if(admin.length <1) {
+      return res.status(409).json({
+        message: "admin not registered"
+      })
+    }
+    else {
+      bcrypt.compare(req.body.password, admin[0].password, (err, result) => {
+        if(result) {
+          const token = jwt.sign({
+            email: admin[0].email,
+            adminId: admin[0]._id 
+          }, process.env.ADMIN_SECRET_KEY, 
+          {
+            expiresIn: "3h"
+          });
+          return res.status(200).json({
+            message: 'Auth successful',
+            token: token
+          })
+        }
+        else {
+          return res.status(401).json({
+            message: 'Auth failed',
+          });
+        }
+      });
+    }
+    
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(401).json({
+        error: err
+    });
+  })
+})
 
 //POST NEW ADMIN
 router.post('/', (req, res, next) => {
@@ -71,9 +116,7 @@ router.post('/', (req, res, next) => {
             .save()
             .then(result => {
               console.log(result);
-              res.status(201).json({
-                message: "admin created"
-              });
+              res.status(201).json(result);
             })
             .catch(err => {
               console.log(err);
@@ -94,7 +137,7 @@ router.post('/', (req, res, next) => {
   })
 });
 
-router.patch('/:adminId', (req, res, next) => {
+router.patch('/:adminId', AdminAuth, (req, res, next) => {
 
   const updateFields = {}
 
@@ -119,7 +162,7 @@ router.patch('/:adminId', (req, res, next) => {
 })
 
 //DELETE ADMIN
-router.delete('/:adminId', (req, res, next) => {
+router.delete('/:adminId', AdminAuth, (req, res, next) => {
   Admin.deleteOne({_id: req.params.adminId})
   .exec()
   .then(result => {

@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
+app.use('/uploads', express.static('uploads'));
 app.use('/products', productRoute);
 app.use('/orders', orderRoute);
 app.use('/users', userRoute);
