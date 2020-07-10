@@ -1,0 +1,65 @@
+.productFull {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  height: 100vh;
+  width: 100vw;
+}
+
+.fullImg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.details {
+  margin: 4rem;
+}
+
+.details > h1 {
+  font-size: 5rem;
+  margin-left: 0;
+}
+
+.details > h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-left: 0;
+}
+
+.detailsYear {
+  font-size: 1.5rem;
+}
+
+.description {
+  font-family: 'Poppins';
+  margin: 1rem;
+}
+
+.back {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  position: absolute;
+  margin: 1rem;
+  padding: 1rem;
+  color: black;
+  background-color: #FFF5FB;
+  text-decoration: none;
+}
+
+.back :hover {
+  background-color: red;
+}
+
+.detailsImg {
+  width: 100%;
+  background-color: #3433;
+}
+
+.detailsImg > div {
+  margin: 2rem;
+  transition: all 0.3s ease;
+}
+
+.detailsImg > div:hover {
+  transform: scale(1.5) rotate(35deg);
+}

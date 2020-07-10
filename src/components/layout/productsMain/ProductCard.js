@@ -7,7 +7,6 @@ import atc from '../../../icons/atc.png';
 export const ProductCard = (props) => {
 
   const {_id ,name, price, company, productImage} = props.product;
-  console.log(props.product)
   
   return (
     <div className="productCard">

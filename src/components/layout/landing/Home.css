@@ -46,31 +46,16 @@ body {
   grid-template-rows: 1fr 1fr;
 }
 
-.products :first-child {
+.firstProduct{
   background-color: #FFDF8D;
 }
-.products :nth-child(2) {
+.secondProduct {
   background-color: #FFD2BD;
 }
-.products :nth-child(3) {
+.thirdProduct {
   background-color: #00C6CF;
 }
-.products :nth-child(4) {
-  background-color: #FFD3E3;
-}
-
-.products > div :first-child {
-  background-color: #FFDF8D;
-}
-
-.products > div :nth-child(2) {
-  background-color: #FFD2BD;
-}
-
-.products > div :nth-child(3) {
-  background-color: #00C6CF;
-}
-.products > div :nth-child(4) {
+.fourthProduct {
   background-color: #FFD3E3;
 }
 

@@ -10,10 +10,6 @@ import Search from './Search';
 export const Shoes = (props) => {
 
   useEffect(() => {
-    // const getProducts = props.getProducts();
-    // console.log(getProducts);
-    // console.log(props.loading);
-    // props.fetchData();
     props.setLoading();
     props.getProducts();
 
@@ -35,26 +31,15 @@ export const Shoes = (props) => {
           <Search />
           <h1 className="productsTitle">Our Selection</h1>
             <ProductsArea loading={props.loading} products={props.products} /> 
-            {/* {
-              props.products.map(product => (
-                <ProductCard key={product._id} product={product} />
-              ))
-            } */}
         </div>
       </div>
     )
   }
 }
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     fetchData: () => dispatch(getProducts())
-//   };
-// };
-
 const mapStateToProps = state => ({
   products: state.products.products,
   loading: state.products.loading
 })
 
-export default connect(mapStateToProps, {getProducts, setLoading} /*, mapDispatchToProps*/)(Shoes);
+export default connect(mapStateToProps, {getProducts, setLoading})(Shoes);

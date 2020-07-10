@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductCard from './ProductCard';
-import product from './Product';
 import './ProductsArea.css';
 
 export const ProductsArea = ({products, loading}) => {

@@ -4,12 +4,10 @@ import { getProducts, setLoading } from '../../../actions/productsActions';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import './Home.css';
-import loading from './loading.gif';
+import Loading from './Loading';
 import Navbar from './Navbar';
+import ProductSm from './ProductSm';
 export const Home = (props) => {
-
-  // const counter = setInterval()
-
   useEffect(() => {
     props.setLoading();
     props.getProducts();
@@ -17,7 +15,11 @@ export const Home = (props) => {
     console.log(props.products);
     console.log(props.loading);
   }, []); 
-
+  if(props.loading) {
+    return <Loading />
+  }
+  else {
+    
   return (
       <div>
         <Navbar />
@@ -45,30 +47,19 @@ export const Home = (props) => {
             </div>
           </div>
           <div className="group-2">
-            {props.loading && <div className="products">
-                                <div><img className="loading" src={loading} alt="loading"/></div>
-                                <div><img className="loading" src={loading} alt="loading"/></div>
-                                <div><img className="loading" src={loading} alt="loading"/></div>
-                                <div><img className="loading" src={loading} alt="loading"/></div>
-                              </div>
-            }
-            {!props.loading && 
-              <div className="products">
-                <div className="product">
-                  
-                </div>
-                <div className="product"></div>
-                <div className="product"></div>
-                <div className="product"></div>
-              </div>
-            }
+            <div className="products">
+                <ProductSm />
+                <ProductSm />
+                <ProductSm />
+                <ProductSm />
+            </div>
             <div className="something"></div>
             </div>
         </div>
       </div>
   )
 }
-
+}
 Home.propTypes = {
   products: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired

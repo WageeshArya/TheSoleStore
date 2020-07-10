@@ -1,0 +1,25 @@
+.image {
+  display: block;
+  height: 150px;
+  width: 150px;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.productImg :hover{
+  transform: scale(1.2) rotate(25deg);
+}
+
+.productSm {
+  font-family: 'Poppins',sans-serif;
+  transition: all 1s ease;
+  background-color: #FFDF8D;
+}
+
+.product {
+  margin: 1rem;
+}
+
+.product > p {
+  margin: 0.5rem 0 0 0.5rem;
+}
