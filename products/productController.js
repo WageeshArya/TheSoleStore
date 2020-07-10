@@ -27,7 +27,7 @@ exports.getProduct = (req, res, next) => {
   console.log(id);
   Product
   .findById(id)
-  .select('name price')
+  .select('name price company year description productImage fullProductImage')
   .then(doc => {
       console.log(doc);
       res.status(200).json(doc);
