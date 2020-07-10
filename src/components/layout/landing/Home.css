@@ -99,3 +99,14 @@ body {
   background-color: #C4C4C4;
 }
 
+@media (max-width: 1200px) {
+  .home {
+    float: bottom;
+    width: 100%;
+    padding-top: 10vh; 
+  }
+
+  .brandName {
+    margin: 10vh 0 0 1rem;
+  }
+}

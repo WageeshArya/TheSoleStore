@@ -8,3 +8,16 @@
   font-size: 3rem;
   font-family: 'Archivo',sans-serif;
 }
+
+@media (max-width: 1200px) {
+  .shoes {
+    margin: 0;
+    padding: 4rem;
+    width: 100vw;
+    float: none;
+  }
+  .productsTitle {
+    margin: 2rem 0;
+    font-size: 2rem;
+  }
+}

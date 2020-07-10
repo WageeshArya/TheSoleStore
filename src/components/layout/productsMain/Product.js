@@ -33,6 +33,7 @@ export const Product = (props) => {
           <div class="description">
             {props.product.description}
           </div>
+          <div class="productAtc">Add to cart</div>
         </div>
       </div>
     )

@@ -31,8 +31,6 @@ h2 {
 
 .productImage {
   display: block;
-  width: 325px;
-  height: 325px;
   margin: 0 auto;
   transition: all 0.3s ease;
   -webkit-transition: all 0.5s ease;
@@ -96,4 +94,15 @@ img {
   font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
   font-weight: 800;
+}
+
+
+@media (max-width: 1200px) {
+  img {
+    width: 125px;
+    height: 125px
+  }
+  h1 {
+    line-height: 2rem;
+  }
 }

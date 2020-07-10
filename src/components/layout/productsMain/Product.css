@@ -3,10 +3,11 @@
   grid-template-columns: 2fr 3fr;
   height: 100vh;
   width: 100vw;
+  overflow: hidden
 }
 
 .fullImg {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   object-fit: cover;
 }
@@ -16,6 +17,7 @@
 }
 
 .details > h1 {
+  line-height: 5rem;
   font-size: 5rem;
   margin-left: 0;
 }
@@ -32,7 +34,6 @@
 
 .description {
   font-family: 'Poppins';
-  margin: 1rem;
 }
 
 .back {
@@ -46,8 +47,8 @@
   text-decoration: none;
 }
 
-.back :hover {
-  background-color: red;
+.back:hover {
+  background-color: #FF5159;
 }
 
 .detailsImg {
@@ -62,4 +63,36 @@
 
 .detailsImg > div:hover {
   transform: scale(1.5) rotate(35deg);
+}
+
+.productAtc {
+  font-family: 'Archivo', sans-serif;
+  margin: 1rem;
+  background-color: #FF5159;
+  float: right;
+  color: white;
+  padding: 1rem 2rem;
+  transition: all 0.5s ease; 
+}
+
+.productAtc:hover {
+  background-color: #A9001D;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .productFull {
+    overflow: visible;
+    grid-template-columns: none;
+    grid-template-rows: 1fr 4fr;
+  }
+  .fullImg {
+    height: 50vh;
+  }
+
+  .productAtc {
+    width: 100%;
+    align-self: center;
+    justify-self: center;
+  }
 }

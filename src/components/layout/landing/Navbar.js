@@ -4,7 +4,7 @@ import './Navbar.css';
 import logo from '../../../icons/logo.png';
 import login from '../../../icons/login.png';
 import signup from '../../../icons/signup.png';
-import home from '../../../icons/home.svg';
+import home from '../../../icons/menu.svg';
 
 export const Navbar = () => {
 
@@ -17,7 +17,7 @@ export const Navbar = () => {
   
   return (
     <div className={`navbar ${homeHovered ? 'extendNav' : ''}`}>
-        <div>
+        <div className="grp1">
           <Link to="/"><img src={logo}  className="brand" alt="logo"/></Link>
         </div>
       <ul className="forUsers">

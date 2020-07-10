@@ -5,3 +5,27 @@
   grid-gap: 1rem;
   grid-row-gap: 3rem;
 }
+
+@media (max-width: 1200px) {
+  .productsArea{
+    width: 100%;
+    grid-template-columns: repeat(3,1fr);
+    margin: 0;
+  }
+}
+
+@media (max-width: 750px) {
+  .productsArea {
+    width: 100%;
+    grid-template-columns: repeat(2,1fr);
+    margin: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .productsArea {
+    width: 100%;
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
+}
