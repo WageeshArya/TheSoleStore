@@ -4,6 +4,7 @@ import { getProducts, setLoading } from '../../../actions/productsActions';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import './Home.css';
+import ShoeGif from './shoeGif.gif';
 import Loading from './Loading';
 import Navbar from './Navbar';
 import ProductSm from './ProductSm';
@@ -53,7 +54,7 @@ export const Home = (props) => {
                 <ProductSm />
                 <ProductSm />
             </div>
-            <div className="something"></div>
+            <div className="something"><img src={ShoeGif} alt=""/></div>
             </div>
         </div>
       </div>

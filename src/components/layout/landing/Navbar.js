@@ -20,10 +20,10 @@ export const Navbar = () => {
         <div className="grp1">
           <Link to="/"><img src={logo}  className="brand" alt="logo"/></Link>
         </div>
-      <ul className="forUsers">
-        <div>
+
+        <div className="forUsers">
           <div className="homeBtn">
-            <li className ={homeHovered ? 'extendHomeIcon' : ''}><a href="#"><img src={home} onClick={setHovered} alt=""/></a></li>
+            <div className ={homeHovered ? 'extendHomeIcon' : ''}><a href="#"><img src={home} onClick={setHovered} alt=""/></a></div>
             <div className={homeHovered ? 'extendHome' : 'reveal'}>
               <ul>
                 <li><a href="#">Admin login</a></li>
@@ -34,10 +34,11 @@ export const Navbar = () => {
           </div>
         </div>
         <div className="icons">
-          <li><a href="#"><img src={login} alt="Log in"/></a></li>
-          <li><a href="#"><img src={signup} alt="Sign up"/></a></li>
+          <ul>
+            <li><a href="#"><img src={login} alt="Log in"/></a></li>
+            <li><a href="#"><img src={signup} alt="Sign up"/></a></li>
+          </ul>
         </div>
-      </ul>
     </div>
   )
 }

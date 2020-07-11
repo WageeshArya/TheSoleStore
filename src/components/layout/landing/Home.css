@@ -91,7 +91,8 @@ body {
   transition: all 1s;
 }
 
-.productsBtn :hover {
+.productsBtn:hover {
+  cursor: pointer;
   box-shadow: black;
 }
 
@@ -99,14 +100,70 @@ body {
   background-color: #C4C4C4;
 }
 
+.something > img {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-100%,-50%);
+}
+
 @media (max-width: 1200px) {
   .home {
+    display: block;
     float: bottom;
     width: 100%;
     padding-top: 10vh; 
   }
 
   .brandName {
-    margin: 10vh 0 0 1rem;
+    padding: 10vh 0 0 1rem;
+    margin: 0;
+  }
+
+  .group-1 {
+    display: block;
+  }
+
+  .branding {
+    display: block;
+  }
+
+  .branding div:nth-child(2) {
+    margin: 0;
+  }
+
+  .branding > div > p {
+    padding: 2rem;
+    margin: 0;
+  }
+
+  .viewProducts {
+    height: 25vh;
+  }
+
+  .viewProducts > div {
+    margin: 0;
+    padding: 2rem;
+  }
+  
+  .viewProducts > div > p {
+    margin: 0;
+  }
+
+  .productsBtn {
+    float: right;
+    margin: 1rem;
+  }
+
+  .group-2 {
+    display: block;
+  }
+
+  .products {
+    width: 100%;
+  }
+
+  .something {
+    height: 25vh;
   }
 }

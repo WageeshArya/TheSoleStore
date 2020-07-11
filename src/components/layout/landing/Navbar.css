@@ -1,6 +1,6 @@
 .navbar {
   display: grid;
-  grid-template-rows: repeat(2,1fr);
+  grid-template-rows: repeat(3,1fr);
   background-color: #BBD4DE;
   font-family: 'Poppins', sans-serif;
   font-size: 2.75rem;
@@ -31,6 +31,12 @@
 
 .homeBtn {
   display: flex;
+}
+
+.homeBtn > div > a > img {
+  display: block;
+  width: 50px;
+  height: 50px;
 }
 
 .extendHome {
@@ -83,9 +89,10 @@
 }
 
 .forUsers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 2;
-  display: grid;
-  grid-template-rows: repeat(2,1fr);
   width: 100%;
   font-weight: 400;
   list-style: none;
@@ -96,42 +103,51 @@
 .icons {
   display: flex;
   flex-direction: column;
-  justify-items: flex-end;
+  justify-content: flex-end;
 }
-.icons > li {
+
+.icons > ul {
+  padding: 0;
+  margin: 0;
+}
+
+.icons > ul > li {
   margin: 5rem auto;
 }
 
-.forUsers :first-child {
+.forUsers {
   margin: 0 auto;
 }
 
-.forUsers :first-child > li > a > img {
+.forUsers li > a > img {
   width: 30px;
   height: 30px;
   transition: all 0.1s linear;
 }
 
-.forUsers :first-child > li > a :hover {
+.forUsers li > a :hover {
   transform: scale(1.2);
 }
 
-.icons > li > a > img {
+.icons > ul {
+  list-style: none;
+}
+
+.icons > ul > li > a > img {
   width: 40px;
   height: 40px;
   transition: all 0.1s linear;
 }
 
-.icons > li > a :hover {
+.icons > ul > li > a :hover {
   transform: scale(1.2);
 }
 
 
 @media (max-width: 1200px) {
   .navbar {
-    grid-template-rows: 1fr;
-    grid-template-columns: repeat(2, 1fr);
-    height: 10vh;
+    display: flex;
+    height: 12vh;
     width: 100%;
   }
   .extendNav {
@@ -142,25 +158,37 @@
   }
   @keyframes example {
     from {
-      height: 10vw;
+      height: 12vw;
     }
     to {
       height: 14vw;
     }
   }
-  .grp1 {
-    position: relative;
-    display: block;
-    float: left;
-    margin: 0;
+
+  .grp1 > a {
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.5rem;
   }
+
   .brand {
     display: block;
-    height: 75px;
-    width: 75px;
-    margin: 1rem 0 0 2rem;
+    height: 80px;
+    width: 80px;
+    margin: 0 auto;
   }
+
+  .homeBtn {
+    display: flex;
+    flex-direction: column;
+  }
+  .homeBtn > div > a > img {
+    width: 30px;
+    height: 30px;
+  }
+
   .forUsers {
     grid-template-rows: none;
     grid-template-columns: repeat(2, 1fr);
@@ -170,8 +198,20 @@
     margin: 0;
   }
 
-  .icons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  .icons > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .icons > ul > li {
+    margin-right: 2rem;
+  } 
+
+  .icons > ul > li > a > img {
+    width: 30px;
+    height: 30px;
   }
 }
