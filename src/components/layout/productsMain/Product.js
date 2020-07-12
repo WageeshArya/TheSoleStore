@@ -11,6 +11,7 @@ export const Product = (props) => {
     const productId = props.match.params.productId;
     props.setLoading();
     props.getSingle(productId);
+    //eslint-disable-next-line
   },[]);
 
   if(props.loading) {
@@ -21,10 +22,10 @@ export const Product = (props) => {
     return (
       <div className="productFull">
         <img className="bgBlob" src={bg} alt="background"/>
-        <img className="bgBlob2" src={bg} alt="background" />
+        <img className="bgBlob2" src={bg2} alt="background" />
         <div>
           <Link className="back" to="/shoes">Go back</Link>
-          <img className="fullImg" src={`http://localhost:5000/${props.product.fullProductImage}`} alt="full product image"/>
+          <img className="fullImg" src={`http://localhost:5000/${props.product.fullProductImage}`} alt="full product"/>
         </div>
         <div className="details">
           <div className="detailsGrid">
@@ -38,7 +39,7 @@ export const Product = (props) => {
           </div>
           <div className="detailsImg">
             <div>
-              <img src={`http://localhost:5000/${props.product.productImage}`} alt="Product image"/>
+              <img src={`http://localhost:5000/${props.product.productImage}`} alt="Product"/>
             </div>
           </div>
           <div className="description">

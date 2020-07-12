@@ -35,7 +35,7 @@ export const Navbar = () => {
         </div>
         <div className="icons">
           <ul>
-            <li><a href="#"><img src={login} alt="Log in"/></a></li>
+            <li><Link to="/users"><img src={login} alt="Log in"/></Link></li>
             <li><a href="#"><img src={signup} alt="Sign up"/></a></li>
           </ul>
         </div>

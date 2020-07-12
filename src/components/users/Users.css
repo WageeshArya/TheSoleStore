@@ -1,0 +1,94 @@
+.usersBody {
+  height: 100vh;
+  width: 100%;
+  background-color: #F4E1E3;
+}
+.usersTitle {
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  line-height: 3rem;
+  padding-top: 5vh;
+}
+.usersTitle > h1 {
+  margin: 0;
+}
+.userContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #F6F5F7;
+  position: absolute;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+label {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  margin-top: 1rem;
+}
+.signup, .login {
+  margin: 2rem;
+}
+
+.error {
+  color: red;
+  transition: all 1s ease;
+}
+
+.email, .password, .confPass {
+  background-color: #F6F5F7;
+  line-height: 2rem;
+  font-size: 1.5rem;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid black;
+}
+
+#signup, #login {
+  margin: 2rem auto;
+  margin-bottom: 0;
+}
+
+.submitBtn {
+  width: 100%;
+  margin: 2rem 0;
+  background-color: #E35C5C;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 1rem;
+}
+
+.submitBtn:hover {
+  cursor: pointer;
+}
+
+.newAcc, .goToLogin {
+  display: block;
+  margin: 0 auto;
+  outline: none;
+  border: none;
+  text-decoration: underline;
+}
+.newAcc, .goToLogin:hover {
+  cursor: pointer;
+}
+
+.hideLogin {
+  display: none;
+}
+
+.showSignup {
+  display: none;
+}
+@media (max-width: 1200px) {
+  .usersTitle > h1 {
+    margin-bottom: 1rem;
+  }
+}
