@@ -78,10 +78,11 @@ router.post('/login', (req, res, next) => {
               userId: user[0]._id 
             }, process.env.JWT_SECRET_KEY, 
             {
-              expiresIn: "3h"
+              expiresIn: "4h"
             });
             return res.status(200).json({
               message: 'Auth successful',
+              user: user,
               token: token
             })
           }
@@ -101,6 +102,7 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post('/signup', (req, res, next) => {
+  
   User.find({email: req.body.email})
   .exec()
   .then(found => {
@@ -108,8 +110,10 @@ router.post('/signup', (req, res, next) => {
       return res.status(500).json({
         message: 'Email id already exists'
       })
+      
     }
     else {
+      console.log(req.body.email);
       bcrypt.hash(req.body.password, 10, (err, hash) => {
         if(err) {
           console.log(err);
@@ -126,9 +130,7 @@ router.post('/signup', (req, res, next) => {
           user
             .save()
             .then(result => {
-              res.status(201).json({
-                message: "User Created"
-              })
+              res.status(201).json(user);
             })
             .catch(err => {
               res.status(500).json(err);
@@ -139,7 +141,7 @@ router.post('/signup', (req, res, next) => {
   })
 })
 
-router.delete('/:userId', adminAuth, (req, res, next) => [
+router.delete('/:userId', checkAuth, (req, res, next) => [
   User.deleteOne({_id:req.param.userId}).exec()
   .then(result => {
     res.status(200).json({
