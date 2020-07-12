@@ -1,14 +1,23 @@
-import React , { useState } from 'react';
+import React , { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../../../icons/logo.png';
 import login from '../../../icons/login.png';
-import signup from '../../../icons/signup.png';
+import cart from '../../../icons/cart.svg';
 import home from '../../../icons/menu.svg';
 
-export const Navbar = () => {
+export const Navbar = (props) => {
 
   const [homeHovered, setHomeHovered] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+
+  useEffect(() => {
+    console.log(props.loggedIn);
+    if(props.loggedIn === true) {
+      setShowCart(true);
+    }
+  },[props.loggedIn]);
 
   const setHovered = () => {
     setHomeHovered(!homeHovered);
@@ -36,11 +45,15 @@ export const Navbar = () => {
         <div className="icons">
           <ul>
             <li><Link to="/users"><img src={login} alt="Log in"/></Link></li>
-            <li><a href="#"><img src={signup} alt="Sign up"/></a></li>
+            <li className={props.loggedIn ? '' : 'hideCart'}><Link to="/orders"><img src={cart} alt="Cart"/></Link></li>
           </ul>
         </div>
     </div>
   )
 }
 
-export default Navbar;
+const mapStateToProps = state => ({
+  loggedIn: state.users.loggedIn 
+})
+
+export default connect(mapStateToProps)(Navbar);

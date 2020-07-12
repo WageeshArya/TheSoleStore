@@ -13,7 +13,6 @@ export const ProductSm = (props) => {
     setInterval(() => {
       setRandom(Math.floor(Math.random()*props.products.length));
       setColor(Math.floor(Math.random()*colors.length));
-      console.log(random);
     },3000);
   },[]);
 

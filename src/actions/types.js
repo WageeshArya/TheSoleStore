@@ -11,3 +11,4 @@ export const QUANTITY_DOWN = 'QUANTITY_DOWN';
 export const NEW_USER = 'NEW_USER';
 export const GET_USER_DATA = 'GET_USER_DATA';
 export const LOGIN = 'LOGIN';
+export const SET_USER_ERROR = 'SET_USER_ERROR';

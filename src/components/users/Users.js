@@ -1,15 +1,14 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'; 
 import { newUser, login } from '../../actions/userActions';
 import './Users.css';
-import { set } from 'mongoose';
 export const Users = props => {
 
   const regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
   
   const [emailError, setEmailError] = useState(false);
   const [passError, setPassError] = useState(false); 
+  const [loginError, setLoginError] = useState(null);
   const [showSignup, setShowSignup] = useState(false);
   const [emailErr, setEmailErr] = useState(false);
 
@@ -67,9 +66,10 @@ export const Users = props => {
       });
     }
     else {
-      if(!regex.test(signEmail))          setEmailError(true);
-
-      else if(signPass === signConfPass)  setPassError(true);
+      if(!regex.test(signEmail))          
+        setEmailError(true);
+      else if(signPass === signConfPass)  
+        setPassError(true);
     }
     // if()
     // props.history.push("/");
@@ -99,7 +99,13 @@ export const Users = props => {
 
       else if(signPass === logConfPass)  setPassError(true);
     }
-    // props.history.push("/");
+
+    if(!props.error) {
+      setLoginError(null);
+      props.history.push("/");
+    }
+    else
+      setLoginError(props.error);
   }
 
   return (
@@ -158,7 +164,7 @@ export const Users = props => {
 }
 
 const mapStateToProps = state => ({
-
+  userErr : state.users.error
 })
 
 export default connect(mapStateToProps, { newUser, login })(Users);

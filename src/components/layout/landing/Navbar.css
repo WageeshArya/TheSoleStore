@@ -20,6 +20,10 @@
   animation-duration: 0.1s;
 }
 
+.hideCart {
+  display: none;
+}
+
 @keyframes example {
   from {
     width: 8vw;
