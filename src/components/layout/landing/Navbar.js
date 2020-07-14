@@ -1,12 +1,16 @@
 import React , { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import { adminLogout } from '../../../actions/adminActions';
+import { logout } from '../../../actions/userActions';
+
 import './Navbar.css';
 import logo from '../../../icons/logo.png';
 import login from '../../../icons/login.png';
 import cart from '../../../icons/cart.svg';
 import home from '../../../icons/menu.svg';
-import logout from '../../../icons/logout.svg';
+import logoutIcon from '../../../icons/logout.svg';
 
 export const Navbar = (props) => {
 
@@ -24,6 +28,14 @@ export const Navbar = (props) => {
     setHomeHovered(!homeHovered);
     console.log(homeHovered);
   }
+
+  const logoutAdmin = () => {
+    props.adminLogout();
+  }
+
+  const logoutUser = () => {
+    props.logout();
+  }
   
   return (
     <div className={`navbar ${homeHovered ? 'extendNav' : ''}`}>
@@ -36,7 +48,8 @@ export const Navbar = (props) => {
             <div className ={homeHovered ? 'extendHomeIcon' : ''}><a href="#"><img src={home} onClick={setHovered} alt=""/></a></div>
             <div className={homeHovered ? 'extendHome' : 'reveal'}>
               <ul>
-                <li><Link to="/admins">Admin login</Link></li>
+                <li className={props.adminLoggedIn ? 'hideIcon':''}><Link to="/admins">Admin Login</Link></li>
+                <li className={props.adminLoggedIn ? '': 'hideIcon'}><Link to="/admins/dash">Admin Dashboard</Link></li>
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Contact</a></li>
               </ul>
@@ -47,8 +60,8 @@ export const Navbar = (props) => {
           <ul>
             <li className={`${props.loggedIn ? 'hideIcon':''} ${props.adminLoggedIn ? 'hideIcon':''}`}><Link to="/users"><img src={login} alt="Log in"/></Link></li>
             <li className={props.loggedIn ? '' : 'hideIcon'}><Link to="/orders"><img src={cart} alt="Cart" /></Link></li>
-            <li className={props.adminLoggedIn ? '' : 'hideIcon'}><img className="logout" src={logout} alt="adminLogout" /></li>
-            <li className={props.loggedIn ? '' : 'hideIcon'}><img className="logout" src={logout} alt="logout" /></li>
+            <li onClick={logoutAdmin} className={props.adminLoggedIn ? '' : 'hideIcon'}><img className="logout" src={logoutIcon} alt="adminLogout" /></li>
+            <li onClick={logoutUser} className={props.loggedIn ? '' : 'hideIcon'}><img className="logout" src={logoutIcon} alt="logout" /></li>
           </ul>
         </div>
     </div>
@@ -60,4 +73,4 @@ const mapStateToProps = state => ({
   adminLoggedIn: state.admins.loggedIn
 })
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, {adminLogout, logout})(Navbar);

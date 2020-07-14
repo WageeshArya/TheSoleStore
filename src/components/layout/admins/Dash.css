@@ -1,0 +1,70 @@
+.dashHead {
+  background-color: #CFD0F4;
+}
+
+.dashHead > h1 {
+  padding: 1rem;
+  margin: 0;
+}
+
+.dashBody {
+  margin: 0;
+  background-color: #eef;
+  height: 100%;
+  width: 100%;
+}
+
+.dashItem {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-gap: 1rem;
+  background-color: #FFE7E7;
+  margin: 1rem auto;
+  font-family: 'Inconsolata', monospace;
+  font-weight: 400;
+  width: 50%;
+  padding: 2rem;
+}
+
+.addNew {
+  background-color: #6CFBCE;
+  color: black;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.addNew:hover {
+  background-color: #20c591;
+}
+
+.dashItemDetails {
+  
+}
+
+.dashItemAttr {
+  
+}
+
+.dashItemBtns {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashItemBtns > button {
+  margin: 1rem 0;
+  background-color: #fff;
+  outline: none;
+  border: none;
+}
+
+.dashItemBtns > button:hover {
+  background-color: #F2CCAC;
+}
+
+.dashItemBtns > button > img {
+  width: 20px;
+  height: 20px;
+  padding: 0.5rem 0;
+}

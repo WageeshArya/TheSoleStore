@@ -80,3 +80,7 @@ export const adminLogout = () => (dispatch) => {
     type: ADMIN_LOGOUT
   })
 }
+
+export const deleteProduct = () => async (dispatch) => {
+  
+}
