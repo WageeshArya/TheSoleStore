@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
-import { newUser, login } from '../../actions/userActions';
+import { newUser, login } from '../../../actions/userActions';
 import './Users.css';
 export const Users = props => {
 
@@ -42,11 +42,13 @@ export const Users = props => {
     setLogConfPass(e.target.value);
   }
 
-  const switchToLogin = () => {
+  const switchToLogin = e => {
+    e.preventDefault();
     setShowSignup(false);
   }
 
-  const switchToSignup = () => {
+  const switchToSignup = e => {
+    e.preventDefault();
     setShowSignup(true);
   }
 
@@ -64,6 +66,7 @@ export const Users = props => {
         email: signEmail,
         password: signPass
       });
+      props.history.push("/");
     }
     else {
       if(!regex.test(signEmail))          
@@ -72,7 +75,7 @@ export const Users = props => {
         setPassError(true);
     }
     // if()
-    // props.history.push("/");
+    
   }
 
   const handleLoginSubmit = e => {
@@ -116,7 +119,7 @@ export const Users = props => {
         <h1>Store</h1>
       </div>
       <div className='userContainer'>
-        <div className={showSignup ? '' : 'hideSignup'}>
+        <div className={showSignup ? 'showForm' : 'hideSignup'}>
         <div className={emailError? 'error': 'valid'}>Please enter a valid email address</div>
         <div className={passError? 'error': 'valid'}>The passwords you entered do not match</div>
           <form className="signup" onSubmit={handleSignupSubmit}>
@@ -138,8 +141,10 @@ export const Users = props => {
             <button className="goToLogin" onClick={switchToLogin}>Already registered?</button>
           </form>
         </div>
-        <div className={showSignup ? 'hideLogin' : ''}>
-          <form className="login" onSubmit={handleLoginSubmit}>
+        <div className={showSignup ? 'hideLogin' : 'showForm'}>
+          <div className={emailError? 'error': 'valid'}>Please enter a valid email address</div>
+          <div className={passError? 'error': 'valid'}>The passwords you entered do not match</div>
+          <form className="login" onSubmit={handleLoginSubmit}> 
             <h1 id="login">Log in</h1>
             <div>
               <label htmlFor="email">Email</label>

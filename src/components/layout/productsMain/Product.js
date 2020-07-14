@@ -45,7 +45,10 @@ export const Product = (props) => {
           <div className="description">
             {props.product.description}
           </div>
-          <div class="productAtc">Add to cart</div>
+          <div className="btns">
+            <Link to="/orders" className={`goToCart ${props.loggedIn? '' : 'hideCartBtn'}`}>View Cart</Link>
+            <div className="productAtc">Add to cart</div>
+          </div>
         </div>
       </div>
     )
@@ -54,6 +57,7 @@ export const Product = (props) => {
 
 const mapStateToProps = state => ({
   product: state.products.product,
-  loading: state.products.loading
+  loading: state.products.loading,
+  loggedIn: state.users.loggedIn
 })
 export default connect(mapStateToProps, { getSingle, setLoading })(Product);

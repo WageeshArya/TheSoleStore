@@ -1,9 +1,10 @@
-import {ATC, QUANTITY_UP, QUANTITY_DOWN, DEL_FROM_CART} from '../actions/types';
-import { quantityUp } from '../actions/cartActions';
+import {ATC, QUANTITY_UP, QUANTITY_DOWN, DEL_FROM_CART, LOGIN_ERR} from '../actions/types';
+import { quantityUp, delFromCart } from '../actions/cartActions';
 const initialState = {
   cart: [],
   total: 0,
-  itemCount: 0
+  itemCount: 0,
+  loginErr: false
 }
 
 export default (state = initialState, action) => {
@@ -29,30 +30,61 @@ export default (state = initialState, action) => {
               }
 
     case QUANTITY_UP: 
-              let index, qty;
-              for(let i=0; i< state.cart.length;i++) {
+              let incIndex, incQty;
+              for(let i=0; i < state.cart.length;i++) {
                 if(state.cart[i]._id === action.payload._id) {
-                  index = i;
-                  qty = state.cart[i].quantity + 1;
+                  incIndex = i;
+                  incQty = state.cart[i].quantity + 1;
                 }
               }
 
-              const updatedItem = {
+              const incItem = {
                 ...action.payload,
-                quantity: qty + 1
+                quantity: incQty
               }
 
               return {
-                state: [...state.cart.slice(0, index),
-                          updatedItem,
-                        ...state.cart.slice(index + 1)
+                state: [...state.cart.slice(0, incIndex),
+                          incItem,
+                        ...state.cart.slice(incIndex + 1)
                         ],
                 total: state.total + action.payload.price,
                 loading: false
               }
 
-    // case QUANTITY_DOWN: 
+    case QUANTITY_DOWN: 
+              let decIndex, decQty;
+              for(let i=0; i < state.cart.length; i++) {
+                if(state.cart[i]._id === action.payload._id) {
+                  decIndex = i;
+                  decQty = state.cart[i].quantity - 1;
+                  if(decQty === 0) {
+                    delFromCart();
+                  }
+                  else {  
+                    const decItem = {
+                      ...action.payload,
+                      quantity: decQty
+                    }
+
+                    return {
+                      state: [...state.cart.slice(0, decIndex),
+                                decItem,
+                              ...state.cart.slice(incIndex + 1)
+                      ],
+                      total: state.total - action.payload.price,
+                      loading: false
+                    }
+                  }
+                }
+              }
     // case DEL_FROM_CART:
+
+    case LOGIN_ERR:
+              return {
+                ...state,
+                loginErr: true
+              }
     default: return state;
   }
 }

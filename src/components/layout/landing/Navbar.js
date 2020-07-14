@@ -6,6 +6,7 @@ import logo from '../../../icons/logo.png';
 import login from '../../../icons/login.png';
 import cart from '../../../icons/cart.svg';
 import home from '../../../icons/menu.svg';
+import logout from '../../../icons/logout.svg';
 
 export const Navbar = (props) => {
 
@@ -35,7 +36,7 @@ export const Navbar = (props) => {
             <div className ={homeHovered ? 'extendHomeIcon' : ''}><a href="#"><img src={home} onClick={setHovered} alt=""/></a></div>
             <div className={homeHovered ? 'extendHome' : 'reveal'}>
               <ul>
-                <li><a href="#">Admin login</a></li>
+                <li><Link to="/admins">Admin login</Link></li>
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Contact</a></li>
               </ul>
@@ -44,8 +45,10 @@ export const Navbar = (props) => {
         </div>
         <div className="icons">
           <ul>
-            <li><Link to="/users"><img src={login} alt="Log in"/></Link></li>
-            <li className={props.loggedIn ? '' : 'hideCart'}><Link to="/orders"><img src={cart} alt="Cart"/></Link></li>
+            <li className={`${props.loggedIn ? 'hideIcon':''} ${props.adminLoggedIn ? 'hideIcon':''}`}><Link to="/users"><img src={login} alt="Log in"/></Link></li>
+            <li className={props.loggedIn ? '' : 'hideIcon'}><Link to="/orders"><img src={cart} alt="Cart" /></Link></li>
+            <li className={props.adminLoggedIn ? '' : 'hideIcon'}><img className="logout" src={logout} alt="adminLogout" /></li>
+            <li className={props.loggedIn ? '' : 'hideIcon'}><img className="logout" src={logout} alt="logout" /></li>
           </ul>
         </div>
     </div>
@@ -53,7 +56,8 @@ export const Navbar = (props) => {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.users.loggedIn 
+  loggedIn: state.users.loggedIn,
+  adminLoggedIn: state.admins.loggedIn
 })
 
 export default connect(mapStateToProps)(Navbar);

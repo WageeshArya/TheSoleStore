@@ -94,11 +94,36 @@
   transform: scale(1.5) rotate(35deg);
 }
 
+.btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  margin: 1rem 0;
+}
+
+.goToCart {
+  font-family: 'Archivo', sans-serif;
+  background-color: #63c498;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  padding: 1rem 2rem;
+  transition: all 0.5s ease; 
+}
+
+.gotoCart:hover {
+  background-color: #00af60;
+  cursor: pointer;
+}
+
+.hideCartBtn {
+  display: none;
+}
+
 .productAtc {
   font-family: 'Archivo', sans-serif;
-  margin: 1rem;
   background-color: #FF5159;
-  float: right;
+  text-align: center;
   color: white;
   padding: 1rem 2rem;
   transition: all 0.5s ease; 

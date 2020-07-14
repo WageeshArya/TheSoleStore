@@ -1,30 +1,30 @@
-import {NEW_USER, GET_USER_DATA, LOGIN, SET_USER_ERROR, LOGOUT} from './types';
+import { NEW_ADMIN, GET_ADMIN_DATA, ADMIN_LOGIN, SET_ADMIN_ERROR, ADMIN_LOGOUT } from './types';
 
-export const newUser = (user) => async (dispatch) => {
-  const userData = {
+export const newAdmin = (admin) => async (dispatch) => {
+  const adminData = {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(user)
+    body: JSON.stringify(admin)
   }
   try{
-    fetch('http://localhost:5000/users/signup', userData)
+    fetch('http://localhost:5000/admin/signup', adminData)
     .then((response) => {
       if(response.ok) {
         response.json().then((data) => {
           dispatch({
-            type: NEW_USER,
+            type: NEW_ADMIN,
             payload: data
           });
-          fetch('http://localhost:5000/users/login', userData)
+          fetch('http://localhost:5000/admin/login', adminData)
           .then((response) => {
             if(response.ok) {
               response.json()
               .then((data) => {
                 dispatch({
-                  type: LOGIN,
+                  type: ADMIN_LOGIN,
                   payload: data
                 });
               });
@@ -38,31 +38,33 @@ export const newUser = (user) => async (dispatch) => {
     console.log(error);
   }
 }
-export const login = (user) => async (dispatch) => {
-  const userData = {
+
+export const adminLogin = (admin) => async (dispatch) => {
+  const adminData = {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(user)
+    body: JSON.stringify(admin)
   }
   try {
-    console.log(userData);
-    fetch('http://localhost:5000/users/login', userData)
+    console.log(adminData);
+    fetch('http://localhost:5000/admin/login', adminData)
     .then((response) => {
       if(response.ok) {
         response.json()
         .then((data) => {
+          console.log(data);
           dispatch({
-            type: LOGIN,
+            type: ADMIN_LOGIN,
             payload: data
           });
         });
       }
       else {
         dispatch({
-          type: SET_USER_ERROR,
+          type: SET_ADMIN_ERROR,
           payload: 'Please re-check your email or password'
         })
       }
@@ -73,12 +75,8 @@ export const login = (user) => async (dispatch) => {
   }
 }
 
-export const getUserData = () => async (dispatch) => {
-
-} 
-
-export const logout = () => dispatch => {
+export const adminLogout = () => (dispatch) => {
   dispatch({
-    type: LOGOUT
-  });
+    type: ADMIN_LOGOUT
+  })
 }

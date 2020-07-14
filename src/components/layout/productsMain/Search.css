@@ -81,3 +81,25 @@
     font-size: 1rem;
   }
 }
+
+@media (max-width: 500px) {
+  .searchgrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .searchbar {
+    font-size: 1rem;
+    border-bottom: 3px solid black;
+  }
+  .sort {
+    font-size: 1rem;
+    border-bottom: 3px solid black;
+  }
+  .company {
+    font-size: 1rem;
+    border-bottom: 3px solid black;
+  }
+  .findBtn {
+    font-size: 1rem;
+  }
+}

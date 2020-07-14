@@ -16,6 +16,10 @@ export const ProductCard = (props) => {
       company: company
     }
     props.addToCart(prod);
+
+    if(props.loginErr) {
+      console.log(props.loginErr);
+    }
   }
   
   return (
@@ -42,8 +46,7 @@ export const ProductCard = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  cart: state.cart.cart,
-  total: state.cart.total
+  loginErr: state.users.loginErr
 })
 
 export default connect(mapStateToProps, {addToCart})(ProductCard);

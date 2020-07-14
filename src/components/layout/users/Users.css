@@ -39,6 +39,9 @@ label {
   color: red;
   transition: all 1s ease;
 }
+.valid {
+  display: none;
+}
 
 .email, .password, .confPass {
   background-color: #F6F5F7;
@@ -69,9 +72,24 @@ label {
   cursor: pointer;
 }
 
+.showForm {
+  animation: loadForm 1s ease forwards;
+}
+
+@keyframes loadForm {
+  from {
+    opacity: 0;
+    transform: translate(-5%,0)
+  }
+  to {
+    opacity: 1;
+    transform: translate(0,0);
+  }
+}
+
 .newAcc, .goToLogin {
   display: block;
-  margin: 0 auto;
+  margin: 1rem auto;
   outline: none;
   border: none;
   text-decoration: underline;
@@ -84,11 +102,34 @@ label {
   display: none;
 }
 
-.showSignup {
+.hideSignup {
   display: none;
 }
 @media (max-width: 1200px) {
   .usersTitle > h1 {
     margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .usersTitle >h1 {
+    font-size: 2rem;
+    margin-bottom: 0;
+    line-height: 1.5rem;
+  }
+  .userContainer {
+    width: 90%;
+  }
+}
+
+@media (max-height: 700px) {
+
+  .usersTitle {
+    padding-top: 1rem;
+  }
+
+  .usersTitle > h1 {
+    font-size: 2rem;
+    line-height: 1.25rem;
   }
 }

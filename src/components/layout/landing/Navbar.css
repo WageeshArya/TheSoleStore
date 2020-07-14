@@ -20,8 +20,12 @@
   animation-duration: 0.1s;
 }
 
-.hideCart {
+.hideIcon {
   display: none;
+}
+
+.logout {
+  
 }
 
 @keyframes example {
@@ -137,6 +141,15 @@
   list-style: none;
 }
 
+.logout {
+  width: 40px;
+  height: 40px;
+  transition: all 0.1s linear;
+} 
+.logout:hover{
+  transform: scale(1.2);
+}
+
 .icons > ul > li > a > img {
   width: 40px;
   height: 40px;
@@ -155,18 +168,21 @@
     width: 100%;
   }
   .extendNav {
-    height: 14vw;
+    height: 14vh;
     text-align: left;
-    animation-name: example;
-    animation-duration: 0.1s;
+    animation-name: expandNavbar 1s ease forwards;
   }
-  @keyframes example {
+  @keyframes expandNavbar {
     from {
-      height: 12vw;
+      height: 12vh;
     }
     to {
-      height: 14vw;
+      height: 16vh;
     }
+  }
+
+  .grp1 {
+    margin: 0 1rem;
   }
 
   .grp1 > a {
@@ -186,11 +202,20 @@
 
   .homeBtn {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
+
+  .extendHomeIcon {
+    position: relative;
+    top: 50%;
+  }
+
   .homeBtn > div > a > img {
     width: 30px;
     height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .forUsers {
@@ -217,5 +242,26 @@
   .icons > ul > li > a > img {
     width: 30px;
     height: 30px;
+  }
+}
+
+@media (max-width: 500px){
+  .navbar {
+    display: flex;
+    height: 15vh;
+    width: 100%;
+  }
+  .extendNav {
+    height: 14vh;
+    text-align: left;
+    animation-name: expandNavbar 1s ease forwards;
+  }
+  @keyframes expandNavbar {
+    from {
+      height: 15vh;
+    }
+    to {
+      height: 20vh;
+    }
   }
 }

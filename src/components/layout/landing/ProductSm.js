@@ -4,20 +4,32 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getProducts } from '../../../actions/productsActions';
 export const ProductSm = (props) => {
-  const colors = ['#FFDF8D','#FFD2BD','#00C6CF','#FFD3E3', '#FBF4D7', '#BEA7BD', '#61AFFF', '#FFF5FB']
-  console.log(props.products);
+  const colors = ['#FFDF8D','#FFD2BD','#00C6CF','#FFD3E3', '#FBF4D7', '#BEA7BD', '#61AFFF', '#FFF5FB'];
+
+  const [id, setId] = useState('');
+  const [clicked, setClicked] = useState(false);
+
   const [random, setRandom] = useState(Math.floor(Math.random()*props.products.length));
   const [color, setColor] = useState(Math.floor(Math.random()*colors.length));
 
   useEffect(() => {
-    setInterval(() => {
-      setRandom(Math.floor(Math.random()*props.products.length));
-      setColor(Math.floor(Math.random()*colors.length));
-    },3000);
+    setId(setInterval(() => {
+      if(clicked){
+        clearInterval(id);
+      }
+      else {
+        setRandom(Math.floor(Math.random()*props.products.length));
+        setColor(Math.floor(Math.random()*colors.length));
+      }
+    },3000)) 
   },[]);
 
+  const onClick = () => {
+    setClicked(true);
+  }
+
   return (
-    <div className="productSm" style={{backgroundColor: colors[color]}}>
+    <div className="productSm" onClick={onClick} style={{backgroundColor: colors[color]}}>
       {
        props.products.length >= 1 && 
                 <div className="product" >
