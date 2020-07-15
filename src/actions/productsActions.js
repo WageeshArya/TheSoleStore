@@ -40,7 +40,6 @@ export const getSingle = (productId) => async (dispatch) => {
 }
 
 export const setLoading = () => {
-  console.log('Loading true');
   return {
     type: SET_LOADING
   }

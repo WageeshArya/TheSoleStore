@@ -26,6 +26,20 @@
   padding: 2rem;
 }
 
+.adminForm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  margin: 2rem auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  z-index: 2;
+  box-shadow: 5px 5px 20px #888888;
+}
+
 .addNew {
   background-color: #6CFBCE;
   color: black;
@@ -67,4 +81,44 @@
   width: 20px;
   height: 20px;
   padding: 0.5rem 0;
+}
+
+.hideForm {
+  display: none;
+}
+
+.closeForm {
+  float: right;
+  margin-right: 1rem;
+  padding: 1rem;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.closeForm > img {
+  width: 30px;
+  height: 30px;
+}
+
+.closeForm:hover {
+  border-radius: 50%;
+  background-color: #cfd1ff;
+  padding: 1rem;
+}
+
+.submitNew {
+  margin: 2rem 0 0 0;
+}
+
+.submitNew > input {
+  background-color: #cfd1ff;
+  border: none;
+  outline: none;
+  padding: 1rem 2rem;
+  font-family: monospace;
+}
+
+.submitNew > input:hover {
+  background-color: rgb(120, 120, 255);
 }

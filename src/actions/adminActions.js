@@ -1,4 +1,4 @@
-import { NEW_ADMIN, GET_ADMIN_DATA, ADMIN_LOGIN, SET_ADMIN_ERROR, ADMIN_LOGOUT } from './types';
+import { NEW_ADMIN, GET_ADMIN_DATA, ADMIN_LOGIN, SET_ADMIN_ERROR, ADMIN_LOGOUT, NEW_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT, SET_PRODUCT_ERROR } from './types';
 
 export const newAdmin = (admin) => async (dispatch) => {
   const adminData = {
@@ -81,6 +81,118 @@ export const adminLogout = () => (dispatch) => {
   })
 }
 
-export const deleteProduct = () => async (dispatch) => {
-  
+export const newProduct = (product) => async (dispatch, getState) => {
+  const { authToken } = getState().admins;
+  const token = `Bearer ${authToken}`;
+  if(!authToken) {
+    
+  }
+  const formData = new FormData();
+  console.log(product);
+  formData.append('name', product.name);
+  formData.append('company', product.company);
+  formData.append('price', product.price);
+  formData.append('description', product.description);
+  formData.append('year', product.year);
+  formData.append('productImage', product.productImage);
+  formData.append('fullProductImage', product.fullProductImage);
+
+  fetch('http://localhost:5000/products', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'authorization': token
+    },
+    body: formData
+  }).then(response => {
+    if(response.ok){
+      response.json()
+      .then(data => {
+        console.log(data);
+      })
+    }
+    else {
+      console.log(response);
+    }
+  })
+
+  console.log(formData);
+}
+
+export const deleteProduct = (productId) => async (dispatch, getState) => {
+
+  const authToken = getState().admins.authToken;
+  const token = `Bearer ${authToken}`;
+  console.log(token);
+  fetch(`http://localhost:5000/products/${productId}`, {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'authorization': token
+    }
+  }).then(response => {
+    if(response.ok) {
+      response.json()
+      .then(data => {
+        console.log(data);
+      })
+    }
+    else {
+      response.json()
+      .then(data => {
+        console.log(data);
+      })
+    }
+  })
+}
+
+export const updateProduct = (product) => async (dispatch, getState) => {
+  const authToken = getState().admins.authToken;
+  const token = `Bearer ${authToken}`;
+
+  const updatedProduct = [
+    {
+      fieldName: "name",
+      value: product.name
+    },
+    {
+      fieldName: "price",
+      value: product.price
+    },
+    {
+      fieldName: "company",
+      value: product.company
+    },
+    {
+      fieldName: "description",
+      value: product.description
+    },
+    {
+      fieldName: "year",
+      value: product.year
+    }
+  ]
+
+  fetch(`http://localhost:5000/products/${product._id}`, {
+    method: 'PATCH',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'authorization': token
+    },
+    body: JSON.stringify(updatedProduct)
+  }).then((response) => {
+    if(response.ok){
+      response.json()
+      .then((data) => {
+        console.log(data);
+      })
+    }
+    else {
+      response.json()
+      .then((error) => {
+        console.log(error);
+      })
+    }
+  })
 }

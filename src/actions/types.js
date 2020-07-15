@@ -20,3 +20,7 @@ export const GET_ADMIN_DATA = 'GET_ADMIN_DATA';
 export const ADMIN_LOGIN = 'ADMIN_LOGIN';
 export const SET_ADMIN_ERROR = 'SET_ADMIN_ERROR';
 export const ADMIN_LOGOUT = 'ADMIN_LOGOUT';
+export const NEW_PRODUCT = 'NEW_PRODUCT';
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
+export const SET_PRODUCT_ERROR = 'SET_PRODUCT_ERROR';

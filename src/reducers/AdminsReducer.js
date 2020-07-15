@@ -1,4 +1,4 @@
-import { NEW_ADMIN, GET_ADMIN_DATA, ADMIN_LOGIN, SET_ADMIN_ERROR, ADMIN_LOGOUT } from '../actions/types';
+import { NEW_ADMIN, GET_ADMIN_DATA, ADMIN_LOGIN, SET_ADMIN_ERROR, ADMIN_LOGOUT, NEW_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT } from '../actions/types';
 const initialState = {
   _id: '',
   email: '',
@@ -33,7 +33,7 @@ export default (state = initialState, action) => {
         loggedIn: false,
         authToken: ''
       }
-
+    case NEW_PRODUCT:
     default: return state;
   }
 }
