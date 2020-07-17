@@ -11,6 +11,7 @@ import login from '../../../icons/login.png';
 import cart from '../../../icons/cart.svg';
 import home from '../../../icons/menu.svg';
 import logoutIcon from '../../../icons/logout.svg';
+import orders from '../../../icons/orders.svg';
 
 export const Navbar = (props) => {
 
@@ -59,7 +60,8 @@ export const Navbar = (props) => {
         <div className="icons">
           <ul>
             <li className={`${props.loggedIn ? 'hideIcon':''} ${props.adminLoggedIn ? 'hideIcon':''}`}><Link to="/users"><img src={login} alt="Log in"/></Link></li>
-            <li className={props.loggedIn ? '' : 'hideIcon'}><Link to="/orders"><img src={cart} alt="Cart" /></Link></li>
+            <li className={props.loggedIn ? '' : 'hideIcon' }><Link to="/orders"><img src={orders} alt="My Orders"/></Link></li>
+            <li className={props.loggedIn ? '' : 'hideIcon'}><Link to="/cart"><img src={cart} alt="Cart" /></Link></li>
             <li onClick={logoutAdmin} className={props.adminLoggedIn ? '' : 'hideIcon'}><img className="logout" src={logoutIcon} alt="adminLogout" /></li>
             <li onClick={logoutUser} className={props.loggedIn ? '' : 'hideIcon'}><img className="logout" src={logoutIcon} alt="logout" /></li>
           </ul>

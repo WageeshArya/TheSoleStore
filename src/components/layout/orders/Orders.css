@@ -1,0 +1,21 @@
+.orderItem {
+  font-family: 'Poppins', sans-serif;
+  background-color: #eee;
+  padding: 1rem;
+  box-shadow: 10px 10px 10px #ddd;
+}
+.orderItem > div > div > p {
+  font-weight: 800;
+  margin-bottom: 0;
+}
+
+.value {
+  font-weight: 400;
+}
+
+.ordersArea {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4 ,1fr);
+  grid-gap: 1rem;
+}

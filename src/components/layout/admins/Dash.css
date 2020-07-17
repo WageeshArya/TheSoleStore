@@ -7,6 +7,21 @@
   margin: 0;
 }
 
+.dashHead > a {
+  position: absolute;
+  padding: 1rem;
+  right: 1%;
+  top: 1%;
+}
+
+.dashHead > a > img {
+  height: 50px;
+  width: 50px;
+}
+.dashHead > a:hover {
+  background-color: #a4a7ff;
+}
+
 .dashBody {
   margin: 0;
   background-color: #eef;
@@ -42,6 +57,7 @@
 
 .addNew {
   background-color: #6CFBCE;
+  font-family: 'Poppins', sans-serif;
   color: black;
   border: none;
   outline: none;
@@ -51,14 +67,6 @@
 
 .addNew:hover {
   background-color: #20c591;
-}
-
-.dashItemDetails {
-  
-}
-
-.dashItemAttr {
-  
 }
 
 .dashItemBtns {

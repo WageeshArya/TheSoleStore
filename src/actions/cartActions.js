@@ -1,11 +1,9 @@
-import {ATC, QUANTITY_UP, QUANTITY_DOWN, DEL_FROM_CART, SET_LOADING, LOGIN_ERR} from './types';
-import { setLoading } from './productsActions';
+import {ATC, QUANTITY_UP, QUANTITY_DOWN, DEL_FROM_CART, SET_LOADING, LOGIN_ERR, DELETE_PRODUCT} from './types';
 
 export const addToCart = (product) => async (dispatch, getState) => {
   const { authToken } = getState().users;
   console.log(authToken);
   if(authToken !== '') {
-    setLoading();
     dispatch({
       type: ATC,
       payload: product
@@ -19,7 +17,6 @@ export const addToCart = (product) => async (dispatch, getState) => {
 }
 
 export const quantityUp = (product) => dispatch => {
-  setLoading();
   dispatch({
     type: QUANTITY_UP,
     payload: product
@@ -27,13 +24,15 @@ export const quantityUp = (product) => dispatch => {
 }
 
 export const quantityDown = (product) => dispatch => {
-  setLoading();
   dispatch({
     type: QUANTITY_DOWN,
     payload: product
   })
 }
 
-export const delFromCart = () => async dispatch => {
-
+export const delFromCart = (product) => dispatch => {
+  dispatch({
+    type: DELETE_PRODUCT,
+    payload: product
+  })
 }

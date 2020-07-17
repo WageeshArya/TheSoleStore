@@ -8,6 +8,7 @@ import { newProduct, updateProduct, deleteProduct } from '../../../actions/admin
 import edit from '../../../icons/edit.svg';
 import del from '../../../icons/delete.svg';
 import cancel from '../../../icons/cancel.svg';
+import home from '../../../icons/home.svg';
 
 export const Dash = (props) => {
 
@@ -145,6 +146,7 @@ export const Dash = (props) => {
 
       <div className="dashHead">
         <h1>Welcome to your Dashboard!</h1>
+        <Link to="/"><img src={home} alt="go home"/></Link>
         <button onClick={showNewProductForm} className="addNew">Add new product</button>
       </div>
 
@@ -189,11 +191,11 @@ export const Dash = (props) => {
       {
         products.map((product => {
           return <div key={product._id} className="dashItem">
-                  <div className="dashItemDetails">
-                    <div className="dashItemAttr"><strong>_id: </strong> {product._id}</div>
-                    <div className="dashItemAttr"><strong>name: </strong> {product.name}</div>
-                    <div className="dashItemAttr"><strong>price: </strong> {product.price}</div>
-                    <div className="dashItemAttr"><strong>description: </strong> {product.description}</div>
+                  <div>
+                    <div><strong>_id: </strong> {product._id}</div>
+                    <div><strong>name: </strong> {product.name}</div>
+                    <div><strong>price: </strong> {product.price}</div>
+                    <div><strong>description: </strong> {product.description}</div>
                   </div>
                   <div className="dashItemBtns">
                     <button onClick={() => props.deleteProduct(product._id)}><img  src={del} alt="delete product" /></button>

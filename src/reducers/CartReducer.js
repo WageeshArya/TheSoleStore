@@ -10,27 +10,32 @@ const initialState = {
 export default (state = initialState, action) => {
   switch(action.type) {
     case ATC:
+              let flag = false;
               for(let i=0 ; i < state.cart.length; i++) {
                 if(state.cart[i]._id === action.payload._id) {
                   console.log('same product found');
+                  flag = true;
                   quantityUp(action.payload);
                 }
               }
-              const newItem = {
+              if(!flag){
+                const newItem = {
                   ...action.payload,
                   quantity: 1
+                }
+                console.log(state.cart);
+                return {
+                  ...state,
+                  itemCount: state.itemCount + 1,
+                  cart: [...state.cart.slice(0, state.cart.length),newItem],
+                  total: state.total + action.payload.price
+                }
               }
               
-              return {
-                ...state,
-                itemCount: state.itemCount + 1,
-                cart: [...state.cart.slice(0, state.itemCount),newItem],
-                total: state.total + action.payload.price,
-                loading: false
-              }
 
     case QUANTITY_UP: 
               let incIndex, incQty;
+              console.log('quantity up');
               for(let i=0; i < state.cart.length;i++) {
                 if(state.cart[i]._id === action.payload._id) {
                   incIndex = i;
@@ -42,9 +47,12 @@ export default (state = initialState, action) => {
                 ...action.payload,
                 quantity: incQty
               }
-
+              console.log([...state.cart.slice(0, incIndex),
+                incItem,
+              ...state.cart.slice(incIndex + 1)
+              ]);
               return {
-                state: [...state.cart.slice(0, incIndex),
+                cart: [...state.cart.slice(0, incIndex),
                           incItem,
                         ...state.cart.slice(incIndex + 1)
                         ],
@@ -59,7 +67,8 @@ export default (state = initialState, action) => {
                   decIndex = i;
                   decQty = state.cart[i].quantity - 1;
                   if(decQty === 0) {
-                    delFromCart();
+                    console.log('123');
+                    delFromCart(action.payload);
                   }
                   else {  
                     const decItem = {
@@ -68,18 +77,30 @@ export default (state = initialState, action) => {
                     }
 
                     return {
-                      state: [...state.cart.slice(0, decIndex),
+                      cart: [...state.cart.slice(0, decIndex),
                                 decItem,
-                              ...state.cart.slice(incIndex + 1)
+                              ...state.cart.slice(decIndex + 1)
                       ],
-                      total: state.total - action.payload.price,
-                      loading: false
+                      total: state.total - action.payload.price
                     }
                   }
                 }
               }
-    // case DEL_FROM_CART:
 
+    case DEL_FROM_CART:
+              let delIndex;
+              for(let i=0; i < state.cart.length; i++) {
+                if(state.cart[i]._id === action.payload._id) {
+                  delIndex = i;
+                }
+              }
+              return {
+                cart: [
+                    ...state.cart.slice(0, delIndex - 1),
+                    ...state.cart.slice(delIndex )
+                ],
+                total: state.total - ( action.payload.price * action.payload.quantity)
+              }
     case LOGIN_ERR:
               return {
                 ...state,

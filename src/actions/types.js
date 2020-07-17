@@ -24,3 +24,7 @@ export const NEW_PRODUCT = 'NEW_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export const SET_PRODUCT_ERROR = 'SET_PRODUCT_ERROR';
+
+export const NEW_ORDER = 'NEW ORDER';
+export const GET_ORDERS = 'GET_ORDERS';
+export const DELETE_ORDERS = 'DELETE_ORDERS';

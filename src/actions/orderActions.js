@@ -1,0 +1,71 @@
+import { GET_ORDERS, NEW_ORDER, DELETE_ORDER, ORDERS_LOADING} from './types';
+
+export const getOrders = () => async (dispatch, getState) => {
+  const { _id } = getState().users;
+  const { authToken } = getState().users;
+  const token = `Bearer ${authToken}`;
+  console.log(token);
+
+  const orderData = {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'authorization': token
+    }
+  }
+  fetch(`http://localhost:5000/orders/${_id}`, orderData)
+  .then(response => {
+    console.log(response);
+      response.json().then(data => {
+        dispatch({
+          type: GET_ORDERS,
+          payload: data.orders
+        })
+        
+      })
+  });
+}
+
+export const newOrder = (products) => async (getState) => {
+  const { _id } = getState().users;
+  const { authToken } = getState().users;
+  const token =  `Bearer ${authToken}`;
+  let productData, orderData;
+
+  for(let i = 0; i < products.length; i++) {
+    productData = {
+      productId: products[i]._id,
+      quantity: products[i].quantity
+    }
+  
+    orderData = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'authorization': token
+      },
+      body: JSON.stringify(productData)
+    }
+  
+    fetch(`http://localhost:5000/orders/${_id}`, orderData)
+    .then(response => {
+      if(response.ok) {
+        response.json()
+        .then(data => {
+          console.log(data);
+        })
+      }
+      else 
+        response.json()
+        .then(err => {
+          console.log(err);
+        })
+    })
+  }
+}
+
+export const deleteOrder = () => async (dispatch, getState) {
+  
+}
