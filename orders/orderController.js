@@ -3,19 +3,26 @@ const Product = require('../products/productModel');
 const User = require('../users/userModel');
 const mongoose = require('mongoose');
 
-exports.getAllOrders = (req, res, next) => {
-  Order.find().exec().then(docs => {
+exports.getOrders = (req, res, next) => {
+  Order.find({userId: req.params.userId})
+  .exec()
+  .then(docs => {
+    console.log(docs);
     const response = {
       count: docs.length,
-      users: docs.map(doc => {
+      orders: [docs.map(doc => {
         return {
-          id: doc._id,
-          email: doc.email
+          orderId: doc._id,
+          userId: doc.userId,
+          productId: doc.productId,
+          quantity: doc.quantity
         }
-      })
+      })]
     }
+    console.log(response);
     res.status(200).json(response);
-  }).catch(err => {
+    })
+    .catch(err => {
     res.status(500).json({
       error: err
     })
@@ -29,6 +36,7 @@ exports.createNewOrder = (req, res, next) => {
     if(result) {
       const order = new Order({
         _id: new mongoose.Types.ObjectId(),
+        userId: req.params.userId,
         productId: req.body.productId,
         quantity: req.body.quantity
       });
@@ -37,13 +45,15 @@ exports.createNewOrder = (req, res, next) => {
         .then(result => {
           User.findOneAndUpdate({_id: req.params.userId}, {$push: {orders: order}})
           .exec()
-          .then(result => { 
+          .then(doc => { 
             res.status(201).json({
               _id: order._id,
+              userId: order.userId,
               productId: order.productId,
               quantity: order.quantity
             })
           }).catch(err => {
+            console.log(req.params.userId);
             console.log('error inside');
             res.status(500).json({
               error: err

@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const User = require('./userModel');
-const adminAuth = require('../auth/adminAuth');
 const checkAuth = require('../auth/checkAuth');
 
 router.get('/', (req, res, next) => {
@@ -68,7 +67,7 @@ router.post('/login', (req, res, next) => {
         console.log(user);
         if(user.length < 1) {
             return res.status(401).json({
-                message: 'Auth failed'
+                message: 'No users found'
             });
         }
         bcrypt.compare(req.body.password, user[0].password, (err, result) => {

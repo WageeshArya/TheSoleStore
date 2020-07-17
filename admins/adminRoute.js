@@ -71,6 +71,7 @@ router.post('/login', (req, res, next) => {
           });
           return res.status(200).json({
             message: 'Auth successful',
+            admin: admin,
             token: token
           })
         }
@@ -92,7 +93,7 @@ router.post('/login', (req, res, next) => {
 })
 
 //POST NEW ADMIN
-router.post('/', (req, res, next) => {
+router.post('/signup', (req, res, next) => {
   Admin.find({email: req.body.email}).exec()
   .then(doc => { 
     if(doc.length >= 1) {
