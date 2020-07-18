@@ -44,3 +44,34 @@ export const setLoading = () => {
     type: SET_LOADING
   }
 }
+
+export const getSearchResults = (searchTerm, sortBy) => (dispatch) => {
+  const productsBody = {
+    'searchTerm': searchTerm,
+    'sortBy': sortBy
+  }
+
+  const productsData = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(productsBody)
+  }
+
+  fetch('http://localhost:5000/products/search', productsData)
+  .then(response => {
+    if(response.ok) {
+      response.json().then(data => {
+        console.log(data);
+      })
+    }
+    else{
+      response.json().then(err => {
+        console.log(err);
+      })
+    }
+  })
+
+}

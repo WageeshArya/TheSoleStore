@@ -45,6 +45,10 @@
   margin: 0 0.5rem;
 }
 
+.quantityUp:hover, .quantityDown:hover {
+  cursor: pointer;
+}
+
 .quantityUp:active {
   background-color: #ccc;
 }

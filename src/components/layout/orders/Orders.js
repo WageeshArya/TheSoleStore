@@ -3,6 +3,8 @@ import './Orders.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getOrders } from '../../../actions/orderActions';
+import del from '../../../icons/delete.svg';
+import home from '../../../icons/home.svg';
 export const Orders = (props) => {
 
   useEffect(() => {
@@ -16,7 +18,10 @@ export const Orders = (props) => {
     console.log(props.orders[0]);
     return (
       <div>
-        <h1 class="ordersTitle">Your Orders</h1>
+        <div className="ordersHeader">
+          <h1 class="ordersTitle">Your Orders</h1>
+          <Link to="/"><img src={home} alt="home"/></Link>
+        </div>
         <div className="ordersArea">
           {
             props.orders[0].map(order => {
@@ -24,11 +29,11 @@ export const Orders = (props) => {
                     <div className="orderItem">
                         <div>
                           <div>
-                            <p>Order ID:</p>
+                            <p>Order:</p>
                             <div className="value">{order.orderId}</div>
                           </div>
                           <div>
-                            <p>Product ID:</p>
+                            <p>Product:</p>
                             <div className="value">{order.productId}</div>
                           </div>
                           <div>
@@ -36,6 +41,7 @@ export const Orders = (props) => {
                             <div className="value">{order.quantity}</div>
                           </div>
                         </div>
+                        <button className="deleteOrder"><img src={del} alt=""/></button>
                     </div>)
             })
           }

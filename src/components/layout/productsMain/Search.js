@@ -1,23 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Search.css';
-export const Search = () => {
+import { connect } from 'react-redux';
+import { getSearchResults } from '../../../actions/productsActions';
+
+export const Search = (props) => {
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState(null)
+  
+  const searchChange = e => {
+    setSearchTerm(e.target.value);
+  }
+
+  const sortByChange = e => {
+    setSortBy(e.target.value);
+    console.log(sortBy);
+  }
+
+  const getResults = e => {
+    e.preventDefault();
+    props.getSearchResults(searchTerm, sortBy);
+  }
+
   return (
     <div className="search">
-      <form>
+      <form onSubmit={getResults}>
         <div className="searchgrid">
           <div>
-            <input className="searchbar" type="text" placeholder="Search"/>
+            <input onChange={searchChange} className="searchbar" type="text" placeholder="Search"/>
           </div>
           <div>
-            <select className="sort" name="sort">
+            <select onChange={sortByChange} className="sort" name="sort">
               <option selected disabled>Sort by</option>
               <option value="asc-price">Lowest prices first</option>
               <option value="des-price">Higest prices first</option>
-            </select>
-          </div>
-          <div>
-            <select className="company" name="company">
-              <option selected disabled>Brand</option>
             </select>
           </div>
           <div>
@@ -29,4 +45,8 @@ export const Search = () => {
   )
 }
 
-export default Search;
+const mapStateToProps = state => ({
+
+})
+
+export default connect(mapStateToProps, { getSearchResults })(Search);

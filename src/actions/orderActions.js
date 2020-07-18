@@ -66,6 +66,33 @@ export const newOrder = (products) => async (getState) => {
   }
 }
 
-export const deleteOrder = () => async (dispatch, getState) {
-  
+export const deleteOrder = (orderId) => async (dispatch, getState) => {
+  const { authToken } = getState().users;
+  const token = `Bearer ${authToken}`;
+
+  const orderData = {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'authorization': token
+    }
+  }
+
+  fetch(`http://localhost:5000/orders/${orderId}`, orderData)
+  .then(response => {
+    if(response.ok) {
+      response.json().then(data => {
+        console.log(data);
+        dispatch({
+          type: DELETE_ORDER
+        })
+      })
+    }
+    else {
+      response.json().then(err => {
+        console.log(err);
+      })
+    }
+  });
 }

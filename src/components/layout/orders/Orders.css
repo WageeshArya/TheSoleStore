@@ -1,12 +1,32 @@
 .orderItem {
   font-family: 'Poppins', sans-serif;
-  background-color: #eee;
+  background-color: #FFF5FF;
   padding: 1rem;
-  box-shadow: 10px 10px 10px #ddd;
+  box-shadow: 10px 10px 10px #FFE8F7;
 }
 .orderItem > div > div > p {
   font-weight: 800;
   margin-bottom: 0;
+}
+
+.ordersHeader {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  background-color: #FFE8F7;
+}
+
+.ordersHeader > a > img {
+  display: block;
+  margin: 1rem auto;
+  width: 40px;
+  height: 40px;
+}
+
+.ordersTitle {
+  font-size: 3rem;
+  padding: 1rem;
+  margin: 0;
+  background-color: #FFE8F7;
 }
 
 .value {
@@ -17,5 +37,26 @@
   margin: 2rem;
   display: grid;
   grid-template-columns: repeat(4 ,1fr);
-  grid-gap: 1rem;
+  grid-gap: 2rem;
+}
+
+.deleteOrder > img {
+  width: 30px;
+  height: 30px;
+}
+
+.deleteOrder {
+  border: none;
+  outline: none;
+  background-color: #fff5fb;
+  padding: 1rem;
+  float: right;
+}
+.deleteOrder:hover {
+  background-color: #ff8dd7;
+}
+
+.deleteOrder:active {
+  background-color: #FFE8F7;
+  box-shadow: 1px 3px 3px #ff8dd7;
 }

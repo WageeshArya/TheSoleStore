@@ -2,6 +2,8 @@ import {GET_PRODUCTS, GET_PRODUCT, SET_LOADING, SET_ERROR} from '../actions/type
 const initialState = {
   product: {},
   products: [],
+  searchResults: [],
+  searched: false,
   loading: false,
   error: null
 }

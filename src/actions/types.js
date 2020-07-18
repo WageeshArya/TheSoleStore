@@ -2,6 +2,7 @@ export const SET_LOADING = 'SET_LOADING';
 export const GET_PRODUCT = 'GET_PRODUCT';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const SET_ERROR = 'SET_ERROR';
+export const GET_RESULTS = 'GET_RESULTS';
 
 export const ATC = 'ATC';
 export const DEL_FROM_CART = 'DEL_FROM_CART';
@@ -27,4 +28,4 @@ export const SET_PRODUCT_ERROR = 'SET_PRODUCT_ERROR';
 
 export const NEW_ORDER = 'NEW ORDER';
 export const GET_ORDERS = 'GET_ORDERS';
-export const DELETE_ORDERS = 'DELETE_ORDERS';
+export const DELETE_ORDER = 'DELETE_ORDER';
