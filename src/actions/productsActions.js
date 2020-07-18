@@ -1,4 +1,4 @@
-import {GET_PRODUCTS, GET_PRODUCT, SET_LOADING, SET_ERROR} from './types';
+import {GET_PRODUCTS, GET_PRODUCT, SET_LOADING, SET_ERROR, GET_RESULTS} from './types';
 
 export const getProducts = () => async (dispatch) => {
   try{
@@ -64,7 +64,10 @@ export const getSearchResults = (searchTerm, sortBy) => (dispatch) => {
   .then(response => {
     if(response.ok) {
       response.json().then(data => {
-        console.log(data);
+        dispatch({
+          type: GET_RESULTS,
+          payload: data
+        })
       })
     }
     else{

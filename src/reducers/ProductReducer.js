@@ -1,8 +1,8 @@
-import {GET_PRODUCTS, GET_PRODUCT, SET_LOADING, SET_ERROR} from '../actions/types';
+import {GET_PRODUCTS, GET_PRODUCT, SET_LOADING, SET_ERROR, GET_RESULTS} from '../actions/types';
 const initialState = {
   product: {},
   products: [],
-  searchResults: [],
+  searchResults: null,
   searched: false,
   loading: false,
   error: null
@@ -23,6 +23,13 @@ export default (state = initialState, action) => {
         ...state,
         product: action.payload,
         loading: false
+      }
+
+    case GET_RESULTS: 
+      return {
+        ...state,
+        searchResults: action.payload,
+        searched: true
       }
 
     case SET_LOADING: 

@@ -30,7 +30,7 @@ export const Shoes = (props) => {
         <div className="shoes">
           <Search />
           <h1 className="productsTitle">Our Selection</h1>
-            <ProductsArea loading={props.loading} products={props.products} /> 
+            <ProductsArea loading={props.loading} products={props.searched ? props.searchResults : props.products } /> 
         </div>
       </div>
     )
@@ -39,7 +39,9 @@ export const Shoes = (props) => {
 
 const mapStateToProps = state => ({
   products: state.products.products,
-  loading: state.products.loading
+  loading: state.products.loading,
+  searchResults: state.products.searchResults,
+  searched: state.products.searched
 })
 
 export default connect(mapStateToProps, {getProducts, setLoading})(Shoes);
