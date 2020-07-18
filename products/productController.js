@@ -1,14 +1,6 @@
 const Product = require('./productModel');
 const mongoose = require('mongoose');
-/* count: docs.length,
-products: docs.map(doc => {
-    return {
-        _id: doc._id,
-        name: doc.name,
-        price: doc.price
-    };
-})
-}*/
+
 exports.getAllProducts = (req, res, next) => {
   Product.find().select('_id name price company year productImage fullProductImage description').exec().then(docs => {
       console.log(docs);
@@ -65,6 +57,48 @@ exports.createNewProduct = (req, res, next) => {
           message: "inside"
       })
   })
+}
+
+exports.searchProducts = (req, res, next) => {
+    const search = req.body.searchTerm;
+    const sortBy = req.body.sortBy;
+    if(sortBy === undefined) {
+        Product.find({
+            $or: [
+                {name: {$regex: new RegExp(search), $options: "i"}},
+                {company: {$regex: new RegExp(search), $options: "i"}}
+            ]
+        })
+        .then(docs => {
+            console.log(docs);
+            res.status(200).json(docs);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
+    }
+    else {
+        let sort;
+        if(sortBy === 'asc-price')
+            sort = 1;
+        else if(sortBy === 'des-price')
+            sort = -1;
+        Product.find({
+            $or: [
+                {name: {$regex: new RegExp(search), $options: "i"}},
+                {company: {$regex: new RegExp(search), $options: "i"}}
+            ]
+        }).sort({price: sort})
+        .select('name price company year description productImage fullProductImage')
+        .exec()
+        .then(docs => {
+            res.status(200).json(docs);
+        })
+        .catch(err => {
+            res.status(500).json(err);
+        })
+    }
 }
 
 exports.updateProduct = (req, res, next) => {

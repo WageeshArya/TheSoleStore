@@ -39,10 +39,13 @@ router.get('/', productController.getAllProducts);
 
 router.get('/:productId', productController.getProduct);
 
+router.post('/search', productController.searchProducts);
+
 router.post('/', adminAuth, upload.any(), productController.createNewProduct);
 
 router.patch('/:productId', adminAuth, productController.updateProduct );
 
 router.delete('/:productId', adminAuth, productController.deleteProduct);
+
 
 module.exports = router;
