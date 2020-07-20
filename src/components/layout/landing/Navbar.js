@@ -49,7 +49,7 @@ export const Navbar = (props) => {
             <div className ={homeHovered ? 'extendHomeIcon' : ''}><a href="#"><img src={home} onClick={setHovered} alt=""/></a></div>
             <div className={homeHovered ? 'extendHome' : 'reveal'}>
               <ul>
-                <li className={props.adminLoggedIn ? 'hideIcon':''}><Link to="/admins">Admin Login</Link></li>
+                <li className={`${props.adminLoggedIn ? 'hideIcon':''} ${props.loggedIn? 'hideIcon': ''}`}><Link to="/admins">Admin Login</Link></li>
                 <li className={props.adminLoggedIn ? '': 'hideIcon'}><Link to="/admins/dash">Admin Dashboard</Link></li>
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Contact</a></li>
@@ -62,8 +62,8 @@ export const Navbar = (props) => {
             <li className={`${props.loggedIn ? 'hideIcon':''} ${props.adminLoggedIn ? 'hideIcon':''}`}><Link to="/users"><img src={login} alt="Log in"/></Link></li>
             <li className={props.loggedIn ? '' : 'hideIcon' }><Link to="/orders"><img src={orders} alt="My Orders"/></Link></li>
             <li className={props.loggedIn ? '' : 'hideIcon'}><Link to="/cart"><img src={cart} alt="Cart" /></Link></li>
-            <li onClick={logoutAdmin} className={props.adminLoggedIn ? '' : 'hideIcon'}><img className="logout" src={logoutIcon} alt="adminLogout" /></li>
-            <li onClick={logoutUser} className={props.loggedIn ? '' : 'hideIcon'}><img className="logout" src={logoutIcon} alt="logout" /></li>
+            <li onClick={logoutAdmin} className={props.adminLoggedIn ? '' : 'hideIcon'}><img className="logout adminIcon" src={logoutIcon} alt="adminLogout" /></li>
+            <li onClick={logoutUser} className={props.loggedIn ? '' : 'hideIcon'}><img className="logout userIcon" src={logoutIcon} alt="logout" /></li>
           </ul>
         </div>
     </div>

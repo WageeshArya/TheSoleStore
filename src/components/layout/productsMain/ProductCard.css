@@ -96,7 +96,37 @@ img {
   font-weight: 800;
 }
 
+.showAdded {
+  position: fixed;
+  padding: 1rem 2rem;
+  font-family: 'Poppins', sans-serif;
+  top: 2%;
+  right: 2%;
+  background-color: #39d6c8;
+  animation: showAdded 1.5s ease;
+}
 
+@keyframes showAdded {
+  0% {
+    top: 0%;
+    right: 2%;
+    opacity: 0;
+  }
+  50% {
+    top: 2%;
+    right: 2%;
+    opacity: 1;
+  }
+  100% {
+    top: 0%;
+    right: 2%;
+    opacity: 0;
+  }
+}
+
+.hideAdded {
+  display: none;
+}
 @media (max-width: 1200px) {
   img {
     width: 125px;

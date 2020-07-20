@@ -1,4 +1,4 @@
-import { GET_ORDERS, NEW_ORDER, DELETE_ORDER, ORDERS_LOADING} from './types';
+import { GET_ORDERS, NEW_ORDER, DELETE_ORDER, ORDERS_LOADING, SET_ERROR} from './types';
 
 export const getOrders = () => async (dispatch, getState) => {
   const { _id } = getState().users;
@@ -27,7 +27,7 @@ export const getOrders = () => async (dispatch, getState) => {
   });
 }
 
-export const newOrder = (products) => async (getState) => {
+export const newOrder = (products) => async (dispatch, getState) => {
   const { _id } = getState().users;
   const { authToken } = getState().users;
   const token =  `Bearer ${authToken}`;
@@ -54,13 +54,19 @@ export const newOrder = (products) => async (getState) => {
       if(response.ok) {
         response.json()
         .then(data => {
-          console.log(data);
+          dispatch({
+            type: NEW_ORDER,
+            payload: data
+          })
         })
       }
       else 
         response.json()
         .then(err => {
-          console.log(err);
+          dispatch({
+            type: SET_ERROR,
+            payload: err
+          })
         })
     })
   }

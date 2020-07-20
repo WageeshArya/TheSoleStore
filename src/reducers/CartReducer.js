@@ -1,4 +1,4 @@
-import {ATC, QUANTITY_UP, QUANTITY_DOWN, DEL_FROM_CART, LOGIN_ERR} from '../actions/types';
+import {ATC, QUANTITY_UP, QUANTITY_DOWN, DEL_FROM_CART, LOGIN_ERR, RESET_LOGIN_ERR, RESET_CART} from '../actions/types';
 import { quantityUp, delFromCart } from '../actions/cartActions';
 const initialState = {
   cart: [],
@@ -67,7 +67,6 @@ export default (state = initialState, action) => {
                   decIndex = i;
                   decQty = state.cart[i].quantity - 1;
                   if(decQty === 0) {
-                    console.log('123');
                     delFromCart(action.payload);
                   }
                   else {  
@@ -94,6 +93,14 @@ export default (state = initialState, action) => {
                   delIndex = i;
                 }
               }
+
+              if(delIndex === 0) {
+                return {
+                  cart: [...state.cart.slice(1)],
+                  total: state.total - action.payload.price
+                } 
+              }
+              
               return {
                 cart: [
                     ...state.cart.slice(0, delIndex - 1),
@@ -105,6 +112,15 @@ export default (state = initialState, action) => {
               return {
                 ...state,
                 loginErr: true
+              }
+    case RESET_LOGIN_ERR:
+              return {
+                ...state,
+                loginErr: false
+              }
+    case RESET_CART: 
+              return {
+                ...initialState
               }
     default: return state;
   }

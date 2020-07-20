@@ -22,6 +22,12 @@ export const Dash = (props) => {
   const [showProductForm, setShowProductForm] = useState(false);
   const [showUpdateForm, setShowUpdateForm] = useState(false);
 
+  const [confDelete, setConfDelete] = useState(false);
+  const [toDelete, setToDelete] = useState(null);
+
+  const [showAdded, setShowAdded] = useState(false);
+  const [showUpdated, setShowUpdated] = useState(false);
+  const [showDeleted, setShowDeleted] = useState(false);
 
   const [newName, setNewName] = useState('');
   const [newPrice, setNewPrice] = useState('');
@@ -86,10 +92,6 @@ export const Dash = (props) => {
     setUpdatedDesc(e.target.value);
   }
 
-  // if(!props.adminLoggedIn) {
-  //   return <div><strong>Error 401:</strong> Unauthorized</div>
-  // } 
-
   const showNewProductForm = () => {
     setShowProductForm(true);
   }
@@ -124,6 +126,10 @@ export const Dash = (props) => {
     console.log(newProduct);
     props.newProduct(newProduct)
     setShowProductForm(false);
+    setShowAdded(true);
+    setTimeout(() => {
+      setShowAdded(false);
+    }, 1500);
   }
 
   const updateProductItem = (e) => {
@@ -139,7 +145,29 @@ export const Dash = (props) => {
     console.log(updatedProduct);
     props.updateProduct(updatedProduct);
     setShowUpdateForm(false);
+    setShowUpdated(true);
+    setTimeout(() => {
+      setShowUpdated(false);
+    }, 1500);
   }
+
+  const showConfDel = (productId) => {
+    setToDelete(productId);
+    setConfDelete(true);
+  } 
+
+  const delProduct = () => {
+    props.deleteProduct(toDelete);
+    setConfDelete(false);
+    setShowDeleted(true);
+    setTimeout(() => {
+      setShowDeleted(false);
+    }, 1500);
+  }
+
+  if(!props.adminLoggedIn) {
+    return <div><strong>Error 401:</strong> Unauthorized</div>
+  } 
 
   return (
     <div className="dashBody">
@@ -186,7 +214,27 @@ export const Dash = (props) => {
         <div className="submitNew">
           <input type="submit" value="submit" />
         </div>
+
       </form>
+      <div className={confDelete ? 'showConfDel' : 'hideForm'}>
+        <h3>Delete product?</h3>
+        <div className="confDelBtns">
+          <button onClick={delProduct}>Delete</button>
+          <button onClick={() => setConfDelete(false)}>Cancel</button>
+        </div>
+      </div>
+
+      <div className={ (showAdded||showUpdated||showDeleted) ?'showItemUpdate':'hideForm'}>
+        {
+          showAdded && (<p>Added new product!</p>)
+        }
+        {
+          showUpdated && (<p>Product updated!</p>)
+        }
+        {
+          showDeleted && (<p>Product deleted!</p>)
+        }
+      </div>
 
       {
         products.map((product => {
@@ -194,12 +242,13 @@ export const Dash = (props) => {
                   <div>
                     <div><strong>_id: </strong> {product._id}</div>
                     <div><strong>name: </strong> {product.name}</div>
+                    <div><strong>company: </strong>{product.company}</div>
                     <div><strong>price: </strong> {product.price}</div>
                     <div><strong>description: </strong> {product.description}</div>
                   </div>
                   <div className="dashItemBtns">
-                    <button onClick={() => props.deleteProduct(product._id)}><img  src={del} alt="delete product" /></button>
-                    <button onClick={() => showUpdateProductForm(product)}><img  src={edit} alt="edit product" /></button>
+                    <button onClick={() => showConfDel(product._id)}><img src={del} alt="delete product" /></button>
+                    <button onClick={() => showUpdateProductForm(product)}><img src={edit} alt="edit product" /></button>
                     <Link to={`/shoes/${product._id}`}>Go to product</Link>
                   </div>
                 </div>

@@ -23,3 +23,9 @@
 .product > p {
   margin: 0.5rem 0 0 0.5rem;
 }
+
+@media (max-width: 500px) {
+  .product {
+    margin: 0.5rem;
+  }
+}

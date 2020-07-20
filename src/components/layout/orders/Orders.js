@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './Orders.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getOrders } from '../../../actions/orderActions';
+import { getOrders, deleteOrder } from '../../../actions/orderActions';
 import del from '../../../icons/delete.svg';
 import home from '../../../icons/home.svg';
 export const Orders = (props) => {
@@ -10,6 +10,10 @@ export const Orders = (props) => {
   useEffect(() => {
     props.getOrders();
   }, [props.orders]);
+
+  const delOrder = (orderId) => {
+    props.deleteOrder(orderId);
+  }
 
   if(!props.orders) {
     return <div>loading</div>
@@ -29,19 +33,21 @@ export const Orders = (props) => {
                     <div className="orderItem">
                         <div>
                           <div>
-                            <p>Order:</p>
+                            <p>Order details:</p>
                             <div className="value">{order.orderId}</div>
-                          </div>
-                          <div>
-                            <p>Product:</p>
+                            <p>Product id:</p>
                             <div className="value">{order.productId}</div>
                           </div>
                           <div>
                             <p>Quantity:</p>
                             <div className="value">{order.quantity}</div>
                           </div>
+                          <div>
+                            <p>Ordered on:</p>
+                            <div className="value">{order.createdAt}</div>
+                          </div>
                         </div>
-                        <button className="deleteOrder"><img src={del} alt=""/></button>
+                        <button onClick={() => delOrder(order.orderId)} className="deleteOrder"><img src={del} alt=""/></button>
                     </div>)
             })
           }
@@ -52,7 +58,7 @@ export const Orders = (props) => {
 }
 const mapStateToProps = state => ({
   orders: state.orders.orders,
-  userId: state.users._id,
+  userId: state.users._id
 });
 
-export default connect(mapStateToProps, { getOrders })(Orders);
+export default connect(mapStateToProps, { getOrders, deleteOrder })(Orders);

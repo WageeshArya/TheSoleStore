@@ -1,4 +1,4 @@
-import {NEW_USER, GET_USER_DATA, LOGIN, SET_USER_ERROR, LOGOUT} from './types';
+import {NEW_USER, GET_USER_DATA, LOGIN, SET_USER_ERROR, RESET_USER_ERROR, LOGOUT} from './types';
 
 export const newUser = (user) => async (dispatch) => {
   const userData = {
@@ -35,7 +35,7 @@ export const newUser = (user) => async (dispatch) => {
     });
   }
   catch(error) {
-    console.log(error);
+    
   }
 }
 export const login = (user) => async (dispatch) => {
@@ -73,9 +73,11 @@ export const login = (user) => async (dispatch) => {
   }
 }
 
-export const getUserData = () => async (dispatch) => {
-
-} 
+export const resetUserErr = () => async (dispatch) => {
+  dispatch({
+    type: RESET_USER_ERROR
+  });
+}
 
 export const logout = () => dispatch => {
   dispatch({

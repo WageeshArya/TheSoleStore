@@ -76,6 +76,33 @@ label {
   animation: loadForm 1s ease forwards;
 }
 
+.showLoggedIn {
+  background-color: #E4F7D2;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  padding: 1rem;
+  animation: showLoggedIn 2s ease;
+}
+
+.hideLoggedIn {
+  display: none;
+}
+
+@keyframes showLoggedIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+} 
+
 @keyframes loadForm {
   from {
     opacity: 0;
@@ -105,6 +132,56 @@ label {
 .hideSignup {
   display: none;
 }
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #7ac142;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 10% auto;
+  box-shadow: inset 0px 0px 0px #7ac142;
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
+}
+
 @media (max-width: 1200px) {
   .usersTitle > h1 {
     margin-bottom: 1rem;

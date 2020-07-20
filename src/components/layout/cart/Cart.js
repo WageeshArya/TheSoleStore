@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Cart.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { quantityUp, quantityDown } from '../../../actions/cartActions';
 import { newOrder } from '../../../actions/orderActions';
+
 export const Cart = (props) => {
 
+  const [ordered, setOrdered] = useState(false);
+  const [orderPlaced, setOrderPlaced] = useState(false);
+  const [orderConfirmed, setOrderConfirmed] = useState(false);
 
   const incQuantity = (product) => {
     props.quantityUp(product);
@@ -16,14 +20,39 @@ export const Cart = (props) => {
   }
 
   const placeOrder = () => {
-    props.newOrder(props.cart);
-    props.history.push("/orders");
+    setOrderPlaced(true);
   }
 
-  console.log(props.cart);
+  const newOrder = () => {
+    props.newOrder(props.cart);
+    setTimeout(() => {
+      setOrderPlaced(false);
+      props.history.push("/shoes");
+    }, 1500);
+  }
+
+  if(!props.loggedIn){
+    return <div><strong>Error 401: </strong>Unauthorized</div>
+  }
+  else if(props.total === 0) {
+    return <div>
+      please place items in your cart first
+    </div>
+  }
   return (
     <div className="cart">
-      <h1 style={{fontSize: '3rem', margin: 'rem', textDecoration: 'underline'}}>Your Cart</h1>
+      <div className="cartHeader">
+        <h1>Your Cart</h1>
+        <div><Link to="/shoes">Browse more shoes</Link></div>
+      </div>
+      <div className={ordered ? '' : 'hideForm'}>Order Placed!</div>
+      <div className={orderPlaced ? 'confirmOrder' : 'hideForm'}>
+        <h1>Place order?</h1>
+        <div>
+          <button onClick={newOrder}>Confirm</button>
+          <button onClick={() => setOrderPlaced(false)}>Cancel</button>
+        </div>
+      </div>
       <div className="cartContainer">
       {
         props.cart.map(product => {
@@ -68,6 +97,7 @@ export const Cart = (props) => {
 }
 
 const mapStateToProps = state => ({
+  loggedIn: state.users.loggedIn,
   cart: state.cart.cart,
   total: state.cart.total
 });

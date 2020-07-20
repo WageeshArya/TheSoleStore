@@ -148,6 +148,7 @@
 } 
 .logout:hover{
   transform: scale(1.2);
+  cursor: pointer;
 }
 
 .icons > ul > li > a > img {
@@ -256,6 +257,9 @@
     text-align: left;
     animation-name: expandNavbar 1s ease forwards;
   }
+  .grp1 {
+    margin: 0;
+  }
   @keyframes expandNavbar {
     from {
       height: 15vh;
@@ -263,5 +267,33 @@
     to {
       height: 20vh;
     }
+  }
+}
+
+@media (max-width: 380px) {
+  .navbar {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: none;
+  }
+  .logout {
+    width: 30px;
+    height: 30px;
+  }
+  .icons > ul > li {
+    margin: auto 0.5rem;
+    margin-left: 0.2rem;
+  }
+
+  .grp1 > a {
+    display: flex;
+    justify-content: left;
+    margin: 0 1rem;
+  }
+
+  .brand {
+    width: 75px;
+    height: 75px;
+    margin: 0;
   }
 }

@@ -2,10 +2,24 @@ import React, { useEffect } from 'react';
 import { Link } from  'react-router-dom';
 import { connect } from 'react-redux';
 import { getSingle, setLoading } from '../../../actions/productsActions';
+import { addToCart, resetLoginErr } from '../../../actions/cartActions';
 import './Product.css';
 import bg from './bg/blob.svg';
 import bg2 from './bg/blob2.svg';
 export const Product = (props) => {
+
+  const atc = () => {
+    const prod = {
+      _id: props.product._id,
+      name: props.product.name,
+      price: props.product.price,
+      company: props.product.company
+    }
+    props.addToCart(prod);
+    setTimeout(() => {
+      props.resetLoginErr();
+    },3000)
+  }
 
   useEffect(() => {
     const productId = props.match.params.productId;
@@ -14,13 +28,13 @@ export const Product = (props) => {
     //eslint-disable-next-line
   },[]);
 
-  if(props.loading) {
+  if(props.product === null) {
     return <div>loading</div>
   }
   else {
-    console.log(props.product);
     return (
       <div className="productFull">
+        <div className={props.loginErr ? 'showLoginErr' : 'hideLoginErr'}>Please log in before adding items to cart</div>
         <img className="bgBlob" src={bg} alt="background"/>
         <img className="bgBlob2" src={bg2} alt="background" />
         <div>
@@ -46,8 +60,8 @@ export const Product = (props) => {
             {props.product.description}
           </div>
           <div className="btns">
-            <Link to="/orders" className={`goToCart ${props.loggedIn? '' : 'hideCartBtn'}`}>View Cart</Link>
-            <div className="productAtc">Add to cart</div>
+            <Link to="/cart" className={`goToCart ${props.loggedIn? '' : 'hideCartBtn'}`}>View Cart</Link>
+            <div onClick={atc} className="productAtc">Add to cart</div>
           </div>
         </div>
       </div>
@@ -57,7 +71,7 @@ export const Product = (props) => {
 
 const mapStateToProps = state => ({
   product: state.products.product,
-  loading: state.products.loading,
-  loggedIn: state.users.loggedIn
+  loggedIn: state.users.loggedIn,
+  loginErr: state.cart.loginErr
 })
-export default connect(mapStateToProps, { getSingle, setLoading })(Product);
+export default connect(mapStateToProps, { getSingle, setLoading, addToCart, resetLoginErr})(Product);

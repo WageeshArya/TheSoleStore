@@ -55,11 +55,17 @@
   font-weight: 800;
   background-color: #65FBD2;
   outline: none;
-  transition: all 0.5s ease;
+  transition: all 0.1s ease;
 }
 
-.findBtn :hover {
-  background-color: #39D6C8;
+.findBtn:hover {
+  background-color: #39d6c8;
+  cursor: pointer;
+}
+
+.findBtn:active {
+  background-color: #4debdd;
+  box-shadow: 2px 2px 2px #39b6ab;
 }
 
 @media (max-width: 1200px) {

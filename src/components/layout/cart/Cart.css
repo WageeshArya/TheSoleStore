@@ -5,10 +5,72 @@
   margin: 0;
 }
 
-.cart > h1 {
+.cartHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   background-color:#9EE2D0;
   margin: 0;
   padding: 2rem;
+}
+
+.cartHeader > h1 {
+  margin: 0;
+  font-size: 3rem
+}
+
+.cartHeader > div > a {
+  background-color: #FCEAFF;
+  text-decoration: none;
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  padding: 1.5rem;
+  margin: auto 0; 
+  float: right;
+}
+
+.cartHeader > div > a:hover {
+  background-color: #C6B5C9;
+}
+
+.confirmOrder {
+  position: fixed;
+  font-family: 'Poppins', sans-serif;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  margin: 2rem auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  z-index: 2;
+  box-shadow: 5px 5px 20px #888888;
+}
+
+.confirmOrder > h1 {
+  margin: 0;
+}
+
+.confirmOrder > div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  margin: 1rem 0;
+}
+
+.confirmOrder > div > button {
+  border: none;
+  outline: none;
+  height: 2rem;
+  font-size: 1.25rem;
+}
+
+.confirmOrder > div > button:first-of-type:hover {
+  background-color: lightgreen;
+}
+
+.confirmOrder > div > button:nth-of-type(2):hover {
+  background-color: #fa5757;
 }
 
 .cartContainer {

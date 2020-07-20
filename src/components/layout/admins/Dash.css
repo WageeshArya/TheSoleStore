@@ -24,6 +24,7 @@
 
 .dashBody {
   margin: 0;
+  padding-bottom: 2rem;
   background-color: #eef;
   height: 100%;
   width: 100%;
@@ -42,7 +43,7 @@
 }
 
 .adminForm {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -53,6 +54,58 @@
   border-radius: 10px;
   z-index: 2;
   box-shadow: 5px 5px 20px #888888;
+}
+
+.showConfDel {
+  position: fixed;
+  font-family: 'Poppins', sans-serif;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  margin: 2rem auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  z-index: 2;
+  box-shadow: 5px 5px 20px #888888;
+}
+
+.confDelBtns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
+.confDelBtns > button {
+  margin: 0;
+}
+
+.showItemUpdate {
+  position: fixed;
+  background-color: wheat;
+  font-family: 'Poppins', sans-serif;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  animation: showItemUpdate 1.5s ease;
+}
+
+@keyframes showItemUpdate {
+  0% {
+    opacity: 0;
+    top: 0%;
+    left: 50%;
+  }
+  50% {
+    opacity: 1;
+    top: 3%;
+    left: 50%;
+  }
+  100% {
+    opacity: 0;
+    top: 0%;
+    left: 50%;
+  }
 }
 
 .addNew {
@@ -129,4 +182,26 @@
 
 .submitNew > input:hover {
   background-color: rgb(120, 120, 255);
+}
+
+@media (max-width: 500px) {
+  .dashItem {
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: 1fr 0.5fr;
+    width: 60%;
+  }
+}
+@media (max-width: 400px) {
+  .dashHead > h1 {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+  .dashItem {
+    width: 75%;
+    padding: 1rem;
+  }
+  .addNew {
+    margin: 0.5rem;
+  }
 }

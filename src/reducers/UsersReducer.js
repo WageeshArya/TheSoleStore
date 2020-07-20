@@ -1,11 +1,11 @@
-import {NEW_USER, GET_USER_DATA, LOGIN, SET_USER_ERROR, LOGOUT} from '../actions/types';
+import {NEW_USER, GET_USER_DATA, LOGIN, SET_USER_ERROR, LOGOUT ,RESET_USER_ERROR} from '../actions/types';
 const initialState = {
   _id: '',
   email: '',
   orders: [],
   authToken: '',
   loggedIn: false,
-  error: null
+  userErr: null
 }
 export default (state = initialState, action) => {
   switch(action.type) {
@@ -32,6 +32,12 @@ export default (state = initialState, action) => {
                     loggedIn: false,
                     authToken: ''
                   }
+    case RESET_USER_ERROR:
+                  return {
+                    ...state,
+                    userErr: null
+                  }
+    
     default: return state;
   }
 }

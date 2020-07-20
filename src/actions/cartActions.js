@@ -1,4 +1,4 @@
-import {ATC, QUANTITY_UP, QUANTITY_DOWN, DEL_FROM_CART, SET_LOADING, LOGIN_ERR, DELETE_PRODUCT} from './types';
+import {ATC, QUANTITY_UP, QUANTITY_DOWN, LOGIN_ERR, DELETE_PRODUCT, RESET_LOGIN_ERR, RESET_CART} from './types';
 
 export const addToCart = (product) => async (dispatch, getState) => {
   const { authToken } = getState().users;
@@ -34,5 +34,17 @@ export const delFromCart = (product) => dispatch => {
   dispatch({
     type: DELETE_PRODUCT,
     payload: product
+  })
+}
+
+export const resetLoginErr = () => dispatch => {
+  dispatch({
+    type: RESET_LOGIN_ERR
+  })
+}
+
+export const resetCart = () => dispatch => {
+  dispatch({
+    type: RESET_CART
   })
 }

@@ -1,6 +1,6 @@
 import {GET_PRODUCTS, GET_PRODUCT, SET_LOADING, SET_ERROR, GET_RESULTS} from '../actions/types';
 const initialState = {
-  product: {},
+  product: null,
   products: [],
   searchResults: null,
   searched: false,
