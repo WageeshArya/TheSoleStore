@@ -10,7 +10,7 @@
 }
 
 .showLoginErr {
-  position: absolute;
+  position: fixed;
   top: 3%;
   right: 3%;
   animation: LoginError 3s ease;
@@ -19,6 +19,7 @@
   background-color: wheat;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
+  z-index: 3;
 }
 
 .hideLoginErr {

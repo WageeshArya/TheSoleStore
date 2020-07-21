@@ -16,6 +16,14 @@
   background-color: #FFDF8D;
 }
 
+.productSmCompany {
+  font-size: 1rem;
+}
+
+.productSmName {
+  font-size: 0.75rem;
+}
+
 .product {
   margin: 1rem;
 }
@@ -23,9 +31,38 @@
 .product > p {
   margin: 0.5rem 0 0 0.5rem;
 }
+/* for 4K */
+@media (min-width: 3100px) {
+  .productSmCompany {
+    font-size: 3rem;
+  }
+  .productSmName {
+    font-size: 1.75rem;
+  }
+  .image {
+    width: 350px;
+    height: 350px;
+  }
+}
 
 @media (max-width: 500px) {
   .product {
     margin: 0.5rem;
+  }
+  .productSmName {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .product {
+    margin: 0;
+  }
+  .image {  
+    width: 100px;
+    height: 100px;
+  }
+  .productSmName {
+    font-size: 0.75rem;
   }
 }

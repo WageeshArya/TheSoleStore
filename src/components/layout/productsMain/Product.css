@@ -23,6 +23,19 @@
   overflow: hidden;
 }
 
+.fullProductPgImg {
+  animation: slideInFromLeft 1s ease-out forwards;   
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .fullImg {
   height: 100vh;
   width: 100%;
@@ -123,9 +136,9 @@
 .productAtc {
   font-family: 'Archivo', sans-serif;
   background-color: #FF5159;
+  line-height: 3rem;
   text-align: center;
   color: white;
-  padding: 1rem 2rem;
   transition: all 0.5s ease; 
 }
 
@@ -155,5 +168,57 @@
 
   .bgBlob2 {
     display: none;
+  }
+}
+
+@media (min-width: 3100px) {
+  .back {
+    font-size: 3rem;
+    padding: 2rem;
+  }
+  .details {
+    margin: 10rem;
+  }
+  #companyName {
+    font-size: 15rem;
+    line-height: 10rem;
+  }
+  .details >.detailsGrid > .detailsGrid1 > h2 {
+    font-size: 7.5rem;
+  }
+  .detailsYear {
+    font-size: 5rem;
+  }
+  .detailsImg > div > img {
+    width: 600px;
+    height: 600px;
+  }
+  .description {
+    font-size: 2.5rem;
+  }
+  .btns {
+    margin: 5rem 0;
+    grid-gap: 2.5rem;
+  }
+  .productAtc, .goToCart {
+    line-height: 4rem;
+    font-size: 4rem;
+    padding: 2rem 0;
+  }
+
+}
+
+@media (max-width: 500px) {
+  .details {
+    margin: 1.5rem;
+  }
+  #companyName {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 330px) {
+  .atc {
+    font-size: 0.9rem;
   }
 }

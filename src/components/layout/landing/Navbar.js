@@ -15,7 +15,7 @@ import orders from '../../../icons/orders.svg';
 
 export const Navbar = (props) => {
 
-  const [homeHovered, setHomeHovered] = useState(false);
+  const [homeClicked, setHomeClicked] = useState(false);
   const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
@@ -25,9 +25,8 @@ export const Navbar = (props) => {
     }
   },[props.loggedIn]);
 
-  const setHovered = () => {
-    setHomeHovered(!homeHovered);
-    console.log(homeHovered);
+  const setClicked = () => {
+    setHomeClicked(!homeClicked);
   }
 
   const logoutAdmin = () => {
@@ -39,15 +38,25 @@ export const Navbar = (props) => {
   }
   
   return (
-    <div className={`navbar ${homeHovered ? 'extendNav' : ''}`}>
+    <div className={`navbar ${homeClicked ? 'extendNav' : ''}`}>
         <div className="grp1">
           <Link to="/"><img src={logo}  className="brand" alt="logo"/></Link>
         </div>
 
         <div className="forUsers">
           <div className="homeBtn">
-            <div className ={homeHovered ? 'extendHomeIcon' : ''}><a href="#"><img src={home} onClick={setHovered} alt=""/></a></div>
-            <div className={homeHovered ? 'extendHome' : 'reveal'}>
+            <div className={homeClicked ? 'extendHomeIcon' : ''}>
+              <a href="#"><img src={home} onClick={setClicked} alt=""/></a>
+              <div className={homeClicked ? 'mobileExtendClicked' : 'hideIcon'}>
+                <ul>
+                <li className={`${props.adminLoggedIn ? 'hideIcon':''} ${props.loggedIn? 'hideIcon': ''}`}><Link to="/admins">Admin Login</Link></li>
+                <li className={props.adminLoggedIn ? '': 'hideIcon'}><Link to="/admins/dash">Admin Dashboard</Link></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+            <div className={homeClicked ? 'extendHome' : 'reveal'}>
               <ul>
                 <li className={`${props.adminLoggedIn ? 'hideIcon':''} ${props.loggedIn? 'hideIcon': ''}`}><Link to="/admins">Admin Login</Link></li>
                 <li className={props.adminLoggedIn ? '': 'hideIcon'}><Link to="/admins/dash">Admin Dashboard</Link></li>

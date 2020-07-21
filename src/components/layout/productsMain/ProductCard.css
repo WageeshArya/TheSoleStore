@@ -31,7 +31,7 @@ h2 {
 
 .productImage {
   display: block;
-  margin: 0 auto;
+  margin: 1rem auto;
   transition: all 0.3s ease;
   -webkit-transition: all 0.5s ease;
 }
@@ -73,6 +73,9 @@ img {
 }
 
 .view {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   font-family: 'Karla',sans-serif;
   font-weight: 600;
   font-size: 1.5rem;
@@ -88,8 +91,10 @@ img {
 }
 
 .price {
-  float: right;
-  margin: 0rem 2rem 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 2rem;
   text-align: right;
   font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
@@ -127,6 +132,25 @@ img {
 .hideAdded {
   display: none;
 }
+
+@media (min-width: 3100px) {
+  .cardTop > div > h1 {
+    font-size: 3rem;
+  }
+  .cardTop > div > h2 {
+    font-size: 2rem;
+  }
+  .atc {
+    font-size: 1.2rem;
+  }
+  .showLoginErr {
+    font-size: 2rem;
+  }
+  .view, .price {
+    font-size: 2rem;
+  }
+}
+
 @media (max-width: 1200px) {
   img {
     width: 125px;

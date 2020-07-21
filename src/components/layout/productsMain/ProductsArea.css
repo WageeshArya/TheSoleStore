@@ -6,6 +6,13 @@
   grid-row-gap: 3rem;
 }
 
+@media (min-width: 3100px) {
+  .productsArea {
+    grid-template-columns: repeat(5, 1fr);
+    margin: 6rem;
+  }
+}
+
 @media (max-width: 1200px) {
   .productsArea{
     width: 100%;

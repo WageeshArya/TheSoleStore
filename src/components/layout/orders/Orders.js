@@ -14,8 +14,10 @@ export const Orders = (props) => {
   const delOrder = (orderId) => {
     props.deleteOrder(orderId);
   }
-
-  if(!props.orders) {
+  if(!props.loggedIn) {
+    return <div><strong>Error 401: </strong>Unauthorized</div>
+  }
+  else if(!props.orders) {
     return <div>loading</div>
   }
   else {
@@ -58,7 +60,8 @@ export const Orders = (props) => {
 }
 const mapStateToProps = state => ({
   orders: state.orders.orders,
-  userId: state.users._id
+  userId: state.users._id,
+  loggedIn: state.users.loggedIn
 });
 
 export default connect(mapStateToProps, { getOrders, deleteOrder })(Orders);

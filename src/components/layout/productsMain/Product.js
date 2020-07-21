@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getSingle, setLoading } from '../../../actions/productsActions';
 import { addToCart, resetLoginErr } from '../../../actions/cartActions';
 import './Product.css';
+import Loading from '../loading/Loading';
 import bg from './bg/blob.svg';
 import bg2 from './bg/blob2.svg';
 export const Product = (props) => {
@@ -29,7 +30,7 @@ export const Product = (props) => {
   },[]);
 
   if(props.product === null) {
-    return <div>loading</div>
+    return <Loading />
   }
   else {
     return (
@@ -37,14 +38,14 @@ export const Product = (props) => {
         <div className={props.loginErr ? 'showLoginErr' : 'hideLoginErr'}>Please log in before adding items to cart</div>
         <img className="bgBlob" src={bg} alt="background"/>
         <img className="bgBlob2" src={bg2} alt="background" />
-        <div>
+        <div className="fullProductPgImage">
           <Link className="back" to="/shoes">Go back</Link>
           <img className="fullImg" src={`http://localhost:5000/${props.product.fullProductImage}`} alt="full product"/>
         </div>
         <div className="details">
           <div className="detailsGrid">
             <div className="detailsGrid1">
-              <h1>{props.product.company}</h1>
+              <h1 id="companyName">{props.product.company}</h1>
             <h2>{props.product.name} <span className="detailsYear">{props.product.year}</span></h2>
             </div>
             <div className="detailsGrid2">
@@ -60,7 +61,7 @@ export const Product = (props) => {
             {props.product.description}
           </div>
           <div className="btns">
-            <Link to="/cart" className={`goToCart ${props.loggedIn? '' : 'hideCartBtn'}`}>View Cart</Link>
+            <Link to="/cart" className={`goToCart ${props.loggedIn? '' : 'hideCartBtn'}`}><div>View Cart</div></Link>
             <div onClick={atc} className="productAtc">Add to cart</div>
           </div>
         </div>

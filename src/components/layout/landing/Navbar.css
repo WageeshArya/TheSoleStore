@@ -24,9 +24,6 @@
   display: none;
 }
 
-.logout {
-  
-}
 
 @keyframes example {
   from {
@@ -47,8 +44,15 @@
   height: 50px;
 }
 
+.extendHomeIcon {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
 .extendHome {
   display: block;
+  text-align: left;
 }
 
 .extendHome > ul { 
@@ -161,8 +165,73 @@
   transform: scale(1.2);
 }
 
+.mobileUnExtended {
+  display: none;
+}
+
+.mobileExtendClicked {
+  display: none;
+}
+
+@media (min-width: 2560px) {
+  .grp1 > a > img {
+    width: 200px;
+    height: 200px;
+  }
+  .homeBtn > div > a > img {
+    width: 100px;
+    height: 100px;
+  }
+  .icons > ul > li > a > img, .icons > ul > li > img {
+    width: 75px;
+    height: 75px;
+  }
+}
 
 @media (max-width: 1200px) {
+  .extendNav {
+    width: 100vw;
+    text-align: center;
+    animation-name: none;
+    animation-duration: 0;
+  }
+  .extendHome {
+    display: none;
+  }
+  .extendHomeIcon {
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .extendHomeIcon > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobileExtendClicked {
+    display: block;
+  }
+  
+  .mobileUnExtended { 
+    display: none;
+  }
+  .mobileExtendClicked > ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .mobileExtendClicked > ul {
+    text-align: center;
+    padding: 0;
+  }
+  .mobileExtendClicked > ul > li > a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    text-align: center;
+  }
   .navbar {
     display: flex;
     height: 12vh;
@@ -246,14 +315,32 @@
   }
 }
 
+@media (max-width: 900px){
+  .mobileExtendClicked > ul > li > a {
+    line-height: 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
 @media (max-width: 500px){
+
+  .mobileExtendClicked > ul > li {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+
+  .grp1 > a > img {
+    width: 60px;
+    height: 60px;
+  }
+
   .navbar {
     display: flex;
-    height: 15vh;
+    height: 10vh;
     width: 100%;
   }
   .extendNav {
-    height: 14vh;
+    height: 16vh;
     text-align: left;
     animation-name: expandNavbar 1s ease forwards;
   }
@@ -262,10 +349,10 @@
   }
   @keyframes expandNavbar {
     from {
-      height: 15vh;
+      height: 10vh;
     }
     to {
-      height: 20vh;
+      height: 16vh;
     }
   }
 }
@@ -273,7 +360,7 @@
 @media (max-width: 380px) {
   .navbar {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: none;
   }
   .logout {
@@ -291,9 +378,9 @@
     margin: 0 1rem;
   }
 
-  .brand {
-    width: 75px;
-    height: 75px;
+  .grp1 > a > img {
+    width: 45px;
+    height: 45px;
     margin: 0;
   }
 }

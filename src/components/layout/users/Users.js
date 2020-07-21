@@ -69,7 +69,12 @@ export const Users = props => {
         email: signEmail,
         password: signPass
       });
-      props.history.push("/")
+      
+      setShowLoggedIn(true);
+      setTimeout(() => {
+        setShowLoggedIn(false);
+        props.history.push("/");
+      },3000);
     }
     else {
       if(!regex.test(signEmail))          

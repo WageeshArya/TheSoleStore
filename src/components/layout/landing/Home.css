@@ -106,6 +106,28 @@ body {
   top: 50%;
   transform: translate(-100%,-50%);
 }
+/* for 4K */
+@media (min-width: 2560px) {    
+  .branding > div > p {
+    font-size: 3rem;
+  }
+  .brandName {
+    font-size: 32rem;
+    line-height: 27rem;
+  }
+  .viewProducts > div > p {
+    font-size: 4rem;
+  }
+  .productsBtn {
+    width: 500px;
+    height: 150px;
+    font-size: 3rem;
+    line-height: 150px;
+  }
+}
+
+/* for 1440p */
+
 
 @media (max-width: 1200px) {
   .home {
@@ -225,4 +247,4 @@ body {
   .viewProducts > div > p {
     font-size: 1.25rem;
   }
-}
+} 

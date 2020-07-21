@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Admins.css';
 import { connect } from 'react-redux';
 import { newAdmin, adminLogin } from '../../../actions/adminActions';
 

@@ -19,6 +19,8 @@
 }
 
 .cartHeader > div > a {
+  display: flex;
+  justify-content: flex-end;
   background-color: #FCEAFF;
   text-decoration: none;
   color: black;
@@ -73,6 +75,35 @@
   background-color: #fa5757;
 }
 
+.ordered {
+  position: fixed;
+  font-family: 'Poppins', sans-serif;
+  padding: 1rem 2rem;
+  box-shadow: 5px 5px 20px #82d382;
+  background-color: #6de26d;
+  top: 0%;
+  right: 50%;
+  animation: ordered 1.5s ease;
+}
+
+@keyframes ordered {
+  0% {
+    opacity: 0;
+    top: 0%;
+    right: 50%;
+  }
+  50% {
+    opacity: 1;
+    top: 3%;
+    right: 50%;
+  }
+  100% {
+    opacity: 0;
+    top: 0%;
+    right: 50%;
+  }
+}
+
 .cartContainer {
   padding: 4rem 0;
 }
@@ -93,6 +124,7 @@
 .cartItem > div > p {
   font-weight: 800;
   border-bottom: 1px solid gray;
+  margin-bottom: 0;
 }
 
 .itemQuantity {
@@ -153,4 +185,73 @@
 .total {
   font-size: 2rem;
   padding: 1rem;
+  text-align: center;
+}
+
+@media (min-width: 2560px) {
+  .cartHeader h1 {
+    font-size: 7rem;
+  }
+  .cartHeader div {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .cartHeader div a { 
+    font-size: 2rem;
+  }
+  .cartItem > div > p {
+    font-size: 2.5rem;
+  }
+  .cartItem > div {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 870px) {
+  .cartItem {
+    width: 75%;
+  }
+  .orderBtnArea {
+    width: 75%;
+  }
+
+  .cartHeader > h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .cartHeader > h1 {
+    font-size: 2.5rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .quantityUp, .quantityDown, .itemQuantity {
+    padding: 0.25rem;
+    margin: 0 0.1rem;
+  }
+
+  .cartHeader > h1 {
+    padding: 0.5rem;
+    font-size: 1.25rem;
+  }
+  .cartHeader > div > a {
+    font-size: 0.75rem;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  .cartItem > div > p {
+    font-size: 0.75rem;
+  }
+  .orderBtnArea {
+    grid-gap: 0.25rem;
+  }
+  .orderBtn {
+    font-size: 1.5rem;
+  }
+  .total {
+    font-size: 1rem;
+  }
 }

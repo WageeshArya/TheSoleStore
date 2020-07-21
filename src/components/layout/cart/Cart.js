@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Cart.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { quantityUp, quantityDown } from '../../../actions/cartActions';
+import { quantityUp, quantityDown, resetCart } from '../../../actions/cartActions';
 import { newOrder } from '../../../actions/orderActions';
 
 export const Cart = (props) => {
@@ -24,9 +24,12 @@ export const Cart = (props) => {
   }
 
   const newOrder = () => {
+    setOrdered(true);
     props.newOrder(props.cart);
     setTimeout(() => {
       setOrderPlaced(false);
+      setOrdered(false);
+      props.resetCart();
       props.history.push("/shoes");
     }, 1500);
   }
@@ -45,7 +48,7 @@ export const Cart = (props) => {
         <h1>Your Cart</h1>
         <div><Link to="/shoes">Browse more shoes</Link></div>
       </div>
-      <div className={ordered ? '' : 'hideForm'}>Order Placed!</div>
+      <div className={ordered ? 'ordered' : 'hideForm'}>Order Placed!</div>
       <div className={orderPlaced ? 'confirmOrder' : 'hideForm'}>
         <h1>Place order?</h1>
         <div>
@@ -102,4 +105,4 @@ const mapStateToProps = state => ({
   total: state.cart.total
 });
 
-export default connect(mapStateToProps, { quantityUp, quantityDown, newOrder })(Cart);
+export default connect(mapStateToProps, { quantityUp, quantityDown, newOrder, resetCart })(Cart);

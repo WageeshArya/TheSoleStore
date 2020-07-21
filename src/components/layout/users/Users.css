@@ -1,7 +1,8 @@
 .usersBody {
   height: 100vh;
   width: 100%;
-  background-color: #F4E1E3;
+  background-color: #f4e1e3;
+  background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff939f' fill-opacity='0.45'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 .usersTitle {
   width: 100%;
@@ -18,7 +19,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: #F6F5F7;
+  background-color: white;
   position: absolute;
   width: 50%;
   top: 50%;
@@ -44,7 +45,6 @@ label {
 }
 
 .email, .password, .confPass {
-  background-color: #F6F5F7;
   line-height: 2rem;
   font-size: 1.5rem;
   box-shadow: none;
@@ -120,6 +120,7 @@ label {
   outline: none;
   border: none;
   text-decoration: underline;
+  background-color: transparent;
 }
 .newAcc, .goToLogin:hover {
   cursor: pointer;
@@ -182,6 +183,50 @@ label {
   }
 }
 
+@media (min-width: 3100px) {
+  .showLoggedIn {
+    font-size: 3rem;
+    background-color: #E4F7D2;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    padding: 1rem;
+    animation: showLoggedIn 2s ease;
+  }
+  @keyframes showLoggedIn {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .usersTitle h1 {
+    font-size: 15rem;
+    line-height: 10rem;
+  }
+  .login h1, #signup {
+    font-size: 5rem;
+  }
+  .login div > label, .signup div > label {
+    font-size: 1.5rem;
+  }
+  .email, .password, .confPass {
+    font-size: 3rem;
+  }
+  .submitBtn {
+    font-size: 2rem;
+  }
+  .newAcc, .goToLogin {
+    font-size: 1.5rem;
+  }
+}
+
 @media (max-width: 1200px) {
   .usersTitle > h1 {
     margin-bottom: 1rem;
@@ -200,13 +245,28 @@ label {
 }
 
 @media (max-height: 700px) {
-
   .usersTitle {
     padding-top: 1rem;
   }
-
   .usersTitle > h1 {
     font-size: 2rem;
     line-height: 1.25rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .login, .signup {
+    margin: 1rem;
+    padding: 0.5rem;
+  }
+  #login, #signup {
+    font-size: 1.5rem;
+  }
+  .login > div label, .signup > div label {
+    font-size: 0.75rem;
+  }
+  .email, .password, .confPass {
+    font-size: 1rem;
+    line-height: 1rem;
   }
 }

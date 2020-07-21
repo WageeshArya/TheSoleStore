@@ -33,11 +33,11 @@ export const ProductSm = (props) => {
       {
        props.products.length >= 1 && 
                 <div className="product" >
-                  <p>
+                  <p className="productSmCompany">
                     <strong>{props.products[random].company}</strong>
                   </p>
 
-                  <p style={{fontSize: '0.75rem'}}>
+                  <p className="productSmName">
                     {props.products[random].name}
                   </p>
 

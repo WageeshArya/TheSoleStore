@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Shoes.css';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import Loading from '../loading/Loading';
 import { getProducts, setLoading } from '../../../actions/productsActions';
 import ProductsArea from './ProductsArea';
 import Navbar from '../landing/Navbar';
@@ -20,7 +20,7 @@ export const Shoes = (props) => {
   }, []); 
   if(props.loading) {
     return (
-      <h1>loading</h1>
+      <Loading />
     )
   }
 
