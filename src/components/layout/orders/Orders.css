@@ -1,6 +1,7 @@
 .orderItem {
   font-family: 'Poppins', sans-serif;
-  background-color: #FFF5FF;
+  background-image: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
+  /* background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%); */
   padding: 1rem;
   box-shadow: 10px 10px 10px #FFE8F7;
 }
@@ -13,13 +14,29 @@
   display: grid;
   grid-template-columns: 9fr 1fr;
   background-color: #FFE8F7;
+  /* background-image: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%); */
 }
 
 .ordersHeader > a > img {
   display: block;
-  margin: 1rem auto;
+  margin: 0;
   width: 40px;
   height: 40px;
+}
+
+.ordersHeader > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ordersHeader > a > img:hover {
+  background-color: #ff8dd7;
+  padding: 1rem;
+}
+
+.hide {
+  display: none;
 }
 
 .ordersTitle {
@@ -27,6 +44,7 @@
   padding: 1rem;
   margin: 0;
   background-color: #FFE8F7;
+  /* background-image: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%); */
 }
 
 .value {
@@ -38,6 +56,55 @@
   display: grid;
   grid-template-columns: repeat(4 ,1fr);
   grid-gap: 2rem;
+}
+
+.confirmDelete {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 5px 10px 10px #888888;
+  z-index: 3;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.confirmDelete h1 {
+  text-align: left;
+  margin: 0;
+}
+
+.confirmDelete > div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
+.confirmDelete > div > button:first-of-type {
+  outline: none;
+  border: none;
+  color: white;
+  background-color: #FF5454;
+  padding: 1rem;
+}
+
+.confirmDelete > div > button:nth-of-type(2) {
+  outline: none;
+  border: none;
+  color: white;
+  background-color: #d4da32;
+  padding: 1rem;
+}
+
+.confirmDelete > div > button:first-of-type:active {
+  background-color: #d63131;
+}
+
+.confirmDelete > div > button:nth-of-type(2) {
+  background-color: #aeb32f;
 }
 
 .deleteOrder > img {
@@ -59,4 +126,33 @@
 .deleteOrder:active {
   background-color: #FFE8F7;
   box-shadow: 1px 3px 3px #ff8dd7;
+}
+
+@media (max-width: 1200px) {
+  .ordersArea {
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .ordersTitle {
+    font-size: 2.5rem;
+  }
+  .ordersArea {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (max-width: 630px) {
+  .ordersTitle {
+    font-size: 1.5rem;
+  }
+  .ordersHeader a > img {
+    width: 30px;
+    height: 30px;
+    margin: 1rem;
+  }
+  .ordersArea {
+    grid-template-columns: 1fr;
+  }
 }

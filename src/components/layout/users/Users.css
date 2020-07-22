@@ -36,9 +36,36 @@ label {
   margin: 2rem;
 }
 
+.dupError {
+  font-family: 'Poppins', sans-serif;
+  background-color: #FF6262;
+  color: white;
+  padding: 1rem;
+  margin: 1rem auto;
+  position: relative;
+  z-index: 3;
+}
+
 .error {
-  color: red;
-  transition: all 1s ease;
+  font-family: 'Poppins', sans-serif;
+  background-color: #FF6262;
+  color: white;
+  padding: 1rem;
+  margin: 1rem auto;
+  position: relative;
+  z-index: 3;
+  animation: error 2s ease;
+}
+@keyframes error {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 .valid {
   display: none;

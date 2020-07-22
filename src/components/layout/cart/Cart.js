@@ -37,11 +37,11 @@ export const Cart = (props) => {
   if(!props.loggedIn){
     return <div><strong>Error 401: </strong>Unauthorized</div>
   }
-  else if(props.total === 0) {
-    return <div>
-      please place items in your cart first
-    </div>
-  }
+  // else if(props.total === 0) {
+  //   return <div>
+  //     please place items in your cart first
+  //   </div>
+  // }
   return (
     <div className="cart">
       <div className="cartHeader">
@@ -56,48 +56,56 @@ export const Cart = (props) => {
           <button onClick={() => setOrderPlaced(false)}>Cancel</button>
         </div>
       </div>
-      <div className="cartContainer">
-      {
-        props.cart.map(product => {
-          console.log(product);
-            return <div>
-                    <div className="cartItem">
-                      <div>
-                        <p>Product</p>
-                        <br/>
-                        {product.company}
-                        <br/>
-                        {product.name}
-                      </div>
-                      <div>
-                        <p>Price</p>
-                        <br/>
-                        ${product.price}
-                      </div>
-                      <div>
-                        <p>Quantity</p>
-                        <br/>
-                        <span onClick={() => incQuantity(product)} className="quantityUp">+</span><span className="itemQuantity">{product.quantity}</span><span onClick={() => decQuantity(product)} className="quantityDown">-</span>
-                      </div>
-                      <div>
-                        <p>Subtotal</p>
-                        <br/>
-                        ${product.quantity * product.price}
+        
+        
+          <div className="cartContainer">
+          {
+            props.total===0 && <div><h2>Please place items in your cart first!</h2></div>
+          }
+
+          { props.total !==0 && 
+            props.cart.map(product => {
+              return <div>
+                      <div className="cartItem">
+                        <div>
+                          <p>Product</p>
+                          <br/>
+                          {product.company}
+                          <br/>
+                          {product.name}
+                        </div>
+                        <div>
+                          <p>Price</p>
+                          <br/>
+                          ${product.price}
+                        </div>
+                        <div>
+                          <p>Quantity</p>
+                          <br/>
+                          <span onClick={() => incQuantity(product)} className="quantityUp">+</span><span className="itemQuantity">{product.quantity}</span><span onClick={() => decQuantity(product)} className="quantityDown">-</span>
+                        </div>
+                        <div>
+                          <p>Subtotal</p>
+                          <br/>
+                          ${product.quantity * product.price}
+                        </div>
                       </div>
                     </div>
-                  </div>
-        })
-      }
-      </div>
-      <div className="orderBtnArea">
-        <button onClick={placeOrder} className="orderBtn">Place Order</button>
-        <div className="total">
-          <strong>Total:</strong> ${props.total}
+            })
+          }
+          {
+            props.total!==0 && 
+            <div className="orderBtnArea">
+              <button onClick={placeOrder} className="orderBtn">Place Order</button>
+              <div className="total">
+                <strong>Total:</strong> ${props.total}
+              </div>
+            </div>
+          }
         </div>
       </div>
-    </div>
-  )
-}
+      
+)}
 
 const mapStateToProps = state => ({
   loggedIn: state.users.loggedIn,

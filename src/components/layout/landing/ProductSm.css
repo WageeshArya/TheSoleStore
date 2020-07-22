@@ -1,7 +1,7 @@
 .image {
   display: block;
-  height: 150px;
-  width: 150px;
+  height: 125px;
+  width: 125px;
   background-color: transparent;
   transition: all 0.3s ease;
 }
@@ -17,11 +17,11 @@
 }
 
 .productSmCompany {
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 .productSmName {
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 .product {
@@ -42,6 +42,19 @@
   .image {
     width: 350px;
     height: 350px;
+  }
+}
+
+@media (max-width: 2600px) and (min-width: 2000px) {
+  .productSmCompany {
+    font-size: 1.5rem;
+  }
+  .productSmName {
+    font-size: 1rem;
+  }
+  .image {
+    width: 200px;
+    height: 200px;
   }
 }
 

@@ -1,4 +1,4 @@
-import {NEW_USER, GET_USER_DATA, LOGIN, SET_USER_ERROR, RESET_USER_ERROR, LOGOUT} from './types';
+import {NEW_USER, LOGIN, USER_NOT_FOUND, RESET_USER_ERROR, LOGOUT, DUPLICATE_FOUND, RESET_DUPLICATE} from './types';
 
 export const newUser = (user) => async (dispatch) => {
   const userData = {
@@ -12,6 +12,7 @@ export const newUser = (user) => async (dispatch) => {
   try{
     fetch('http://localhost:5000/users/signup', userData)
     .then((response) => {
+      console.log(response);
       if(response.ok) {
         response.json().then((data) => {
           dispatch({
@@ -32,12 +33,20 @@ export const newUser = (user) => async (dispatch) => {
           });
         });
       }
+      else if(response.status === 409) {
+        dispatch({type: DUPLICATE_FOUND});
+      }
     });
   }
   catch(error) {
-    
+    console.log(error);
   }
 }
+
+export const resetDuplicate = () => (dispatch) => {
+    dispatch({type: RESET_DUPLICATE});
+}
+
 export const login = (user) => async (dispatch) => {
   const userData = {
     method: 'POST',
@@ -60,10 +69,9 @@ export const login = (user) => async (dispatch) => {
           });
         });
       }
-      else {
+      else if(response.status === 404) {
         dispatch({
-          type: SET_USER_ERROR,
-          payload: 'Please re-check your email or password'
+          type: USER_NOT_FOUND
         })
       }
     });

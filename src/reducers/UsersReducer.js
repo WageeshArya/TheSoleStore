@@ -1,16 +1,20 @@
-import {NEW_USER, GET_USER_DATA, LOGIN, SET_USER_ERROR, LOGOUT ,RESET_USER_ERROR} from '../actions/types';
+import {NEW_USER, LOGIN, USER_NOT_FOUND, LOGOUT ,RESET_USER_ERROR, DUPLICATE_FOUND, RESET_DUPLICATE} from '../actions/types';
 const initialState = {
   _id: '',
   email: '',
   orders: [],
   authToken: '',
   loggedIn: false,
-  userErr: null
+  userErr: null,
+  duplicate: false
 }
 export default (state = initialState, action) => {
   switch(action.type) {
     case NEW_USER: 
-                  return state;
+                  return {
+                    ...state,
+                    duplicate: false
+                  };
     case LOGIN: 
                   return {
                     ...state,
@@ -19,12 +23,13 @@ export default (state = initialState, action) => {
                     orders: action.payload.user[0].orders,
                     authToken: action.payload.token,
                     loggedIn: true,
+                    duplicate: false,
                     error: null
                   }
-    case SET_USER_ERROR:
+    case USER_NOT_FOUND:
                   return {
                     ...state,
-                    error: action.payload
+                    userErr: true
                   }
     case LOGOUT: 
                   return {
@@ -37,7 +42,16 @@ export default (state = initialState, action) => {
                     ...state,
                     userErr: null
                   }
-    
+    case DUPLICATE_FOUND: 
+                  return {
+                    ...state,
+                    duplicate: true
+                  }
+    case RESET_DUPLICATE: 
+                  return {
+                    ...state,
+                    duplicate: false
+                  }
     default: return state;
   }
 }

@@ -173,7 +173,7 @@
   display: none;
 }
 
-@media (min-width: 2560px) {
+@media (min-width: 3100px) {
   .grp1 > a > img {
     width: 200px;
     height: 200px;
@@ -186,9 +186,12 @@
     width: 75px;
     height: 75px;
   }
+  .extendHome > ul > li > a { 
+    font-size: 2rem;
+  } 
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1450px) {
   .extendNav {
     width: 100vw;
     text-align: center;

@@ -68,7 +68,7 @@
   box-shadow: 2px 2px 2px #39b6ab;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1450px) {
   .searchgrid {
     padding: 1rem;
     grid-gap: 0.5rem;

@@ -1,5 +1,6 @@
 .cart {
   background-color: #D8FFDD;
+  position: absolute;
   height: 100%;
   width: 100%;
   margin: 0;
@@ -106,6 +107,13 @@
 
 .cartContainer {
   padding: 4rem 0;
+}
+
+.cartContainer > div > h2 {
+  text-align: center;
+  margin: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 .cartItem {

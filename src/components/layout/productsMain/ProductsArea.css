@@ -13,7 +13,7 @@
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1450px) {
   .productsArea{
     width: 100%;
     grid-template-columns: repeat(3,1fr);

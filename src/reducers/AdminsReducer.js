@@ -1,15 +1,15 @@
-import { NEW_ADMIN, GET_ADMIN_DATA, ADMIN_LOGIN, SET_ADMIN_ERROR, ADMIN_LOGOUT, NEW_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT } from '../actions/types';
+import { NEW_ADMIN, ADMIN_LOGIN, SET_ADMIN_ERROR, ADMIN_LOGOUT, DUPLICATE_FOUND, RESET_DUPLICATE} from '../actions/types';
 const initialState = {
   _id: '',
   email: '',
   authToken: '',
   loggedIn: false,
-  error: null
+  error: null,
+  duplicate: false
 }
 
 export default (state = initialState, action) => {
   switch(action.type) {
-
     case NEW_ADMIN: 
       return state;
 
@@ -33,7 +33,16 @@ export default (state = initialState, action) => {
         loggedIn: false,
         authToken: ''
       }
-    case NEW_PRODUCT:
+    case DUPLICATE_FOUND: 
+      return {
+        ...state,
+        duplicate: true
+      }
+    case RESET_DUPLICATE: 
+      return {
+        ...state,
+        duplicate: false
+      }
     default: return state;
   }
 }

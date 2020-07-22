@@ -29,10 +29,10 @@
 
 @keyframes slideInFromLeft {
   0% {
-    transform: translateX(-100%);
+    opacity: 0;
   }
   100% {
-    transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -168,6 +168,11 @@
 
   .bgBlob2 {
     display: none;
+  }
+
+  .detailsImg > div > img{
+    width: 300px;
+    height: 300px;
   }
 }
 

@@ -1,4 +1,13 @@
-import { NEW_ADMIN, GET_ADMIN_DATA, ADMIN_LOGIN, SET_ADMIN_ERROR, ADMIN_LOGOUT, NEW_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT, SET_PRODUCT_ERROR } from './types';
+import { 
+        NEW_ADMIN,
+        GET_ADMIN_DATA,
+        ADMIN_LOGIN,
+        SET_ADMIN_ERROR,
+        ADMIN_LOGOUT,
+        DUPLICATE_FOUND,
+        RESET_DUPLICATE,
+        RESET_ADMIN_ERROR,
+        ADMIN_NOT_FOUND } from './types';
 
 export const newAdmin = (admin) => async (dispatch) => {
   const adminData = {
@@ -32,6 +41,9 @@ export const newAdmin = (admin) => async (dispatch) => {
           });
         });
       }
+      else if(response.status === 409) {
+        dispatch({type: DUPLICATE_FOUND});
+      }
     });
   }
   catch(error) {
@@ -62,11 +74,10 @@ export const adminLogin = (admin) => async (dispatch) => {
           });
         });
       }
-      else {
+      else if(response.status === 404) {
         dispatch({
-          type: SET_ADMIN_ERROR,
-          payload: 'Please re-check your email or password'
-        })
+          type: ADMIN_NOT_FOUND
+        });
       }
     });
   }
@@ -195,4 +206,14 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       })
     }
   })
+}
+
+export const resetAdminErr = () => async (dispatch) => {
+  dispatch({
+    type: RESET_ADMIN_ERROR
+  });
+}
+
+export const resetAdminDuplicate = () => (dispatch) => {
+  dispatch({type: RESET_DUPLICATE});
 }

@@ -1,5 +1,8 @@
-body {
+html, body {
+  position: absolute;
   margin: 0;  
+  height: 100%;
+  width: 100%;
 }
 .home {
   width: 92vw;
@@ -96,18 +99,20 @@ body {
   box-shadow: black;
 }
 
-.something {
-  background-color: #C4C4C4;
+.shoeGif {
+  background-color: #E8F3F1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.something > img {
-  position: relative;
-  left: 50%;
-  top: 50%;
-  transform: translate(-100%,-50%);
+.gif {
+  height: 300px;
+  width: 300px;
 }
+
 /* for 4K */
-@media (min-width: 2560px) {    
+@media (min-width: 3100px) {    
   .branding > div > p {
     font-size: 3rem;
   }
@@ -127,9 +132,28 @@ body {
 }
 
 /* for 1440p */
+@media(max-width: 2600px)and (min-width: 2000px) {
+  .branding > div > p {
+    font-size: 3rem;
+  }
+  .brandName {
+    font-size: 15rem;
+    line-height: 10rem;
+  }
+  .viewProducts > div > p {
+    font-size: 2rem;
+  }
+  .productsBtn {
+    width: 250px;
+    height: 100px;
+    font-size: 2rem;
+    line-height: 100px;
+  }
+}
 
-
-@media (max-width: 1200px) {
+@media (max-width: 1450px) {
+  /* .shoeGif {
+  } */
   .home {
     display: block;
     float: bottom;

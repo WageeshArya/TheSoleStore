@@ -21,7 +21,7 @@ export const ProductSm = (props) => {
         setRandom(Math.floor(Math.random()*props.products.length));
         setColor(Math.floor(Math.random()*colors.length));
       }
-    },3000)) 
+    },2000)) 
   },[]);
 
   const onClick = () => {

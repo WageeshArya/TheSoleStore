@@ -151,10 +151,10 @@ img {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1470px) {
   img {
-    width: 125px;
-    height: 125px
+    width: 150px;
+    height: 150px
   }
   h1 {
     line-height: 2rem;

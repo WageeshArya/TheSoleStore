@@ -12,7 +12,7 @@ import Orders from './components/layout/orders/Orders';
 import Admins from './components/layout/admins/Admins';
 import Dash from './components/layout/admins/Dash';
 import Cart from './components/layout/cart/Cart';
-
+import NotFound from './components/layout/notFound/NotFound';
 export const App = () => {
   return (
     <Provider store={store}>
@@ -27,7 +27,7 @@ export const App = () => {
           <Route exact path="/admins" component={Admins}/>
           <Route exact path="/admins/dash" component={Dash} />
           <Route exact path="/cart" component={Cart} />
-          {/* <Route component={NotFound} /> */}
+          <Route component={NotFound} />
         </Switch>
       </div>
       </Router>

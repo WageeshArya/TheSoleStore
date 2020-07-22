@@ -52,7 +52,7 @@ export const Navbar = (props) => {
                 <li className={`${props.adminLoggedIn ? 'hideIcon':''} ${props.loggedIn? 'hideIcon': ''}`}><Link to="/admins">Admin Login</Link></li>
                 <li className={props.adminLoggedIn ? '': 'hideIcon'}><Link to="/admins/dash">Admin Dashboard</Link></li>
                 <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="https://github.com/WageeshArya">Contact</a></li>
                 </ul>
               </div>
             </div>
