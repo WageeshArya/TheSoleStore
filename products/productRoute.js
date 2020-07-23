@@ -1,23 +1,25 @@
+require("dotenv").config();
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const multer = require('multer');
-
+const aws = require('aws-sdk');
+const multerS3 = require('multer-s3');
 const productController = require('./productController');
 const adminAuth = require('../auth/adminAuth');
 
-mongoose.connect(`mongodb+srv://WageeshArya:${process.env.MONGODB_ATLAS_PASS}@thesolestore.zqilv.mongodb.net/<dbname>?retryWrites=true&w=majority`, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true 
-});
+// console.log(process.env.AWS_SECRET_ACCESS_KEY);
+// console.log(process.env.AWS_ACCESS_KEY_ID);
 
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null,'./uploads/')
-    },
-    filename: function(req, file, cb) {
-        cb(null, new Date().toISOString().replace(/:/g, '-') +'-'+ file.originalname)
-    }
+var storage = multer.memoryStorage();
+var upload = multer({ storage: storage });
+
+const s3 = new aws.S3();
+aws.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    bucket: process.env.BUCKET_NAME,
+    region: process.env.REGION
 })
 
 const fileFilter = (req, file, cb) => {
@@ -27,12 +29,9 @@ const fileFilter = (req, file, cb) => {
         cb(null, false);
 }
 
-const upload = multer({
-    storage: storage,
-    fileFiler: fileFilter,
-    limits: {
-        fileSize: 1024*1024*2
-    }
+mongoose.connect(`mongodb+srv://WageeshArya:${process.env.MONGODB_ATLAS_PASS}@thesolestore.zqilv.mongodb.net/<dbname>?retryWrites=true&w=majority`, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true 
 });
 
 router.get('/', productController.getAllProducts);

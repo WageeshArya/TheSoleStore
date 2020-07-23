@@ -66,7 +66,7 @@ router.post('/login', (req, res, next) => {
     .then(user => {
         console.log(user);
         if(user.length < 1) {
-            return res.status(401).json({
+            return res.status(404).json({
                 message: 'No users found'
             });
         }
@@ -106,10 +106,9 @@ router.post('/signup', (req, res, next) => {
   .exec()
   .then(found => {
     if(found.length >= 1) {
-      return res.status(500).json({
-        message: 'Email id already exists'
+      res.status(409).json({
+        message: 'User already exists'
       })
-      
     }
     else {
       console.log(req.body.email);

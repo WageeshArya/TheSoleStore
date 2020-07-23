@@ -26,7 +26,15 @@ const productSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    productImageName: {
+        type: String,
+        required: true
+    },
     fullProductImage: {
+        type: String,
+        required: true
+    },
+    fullProductImageName: {
         type: String,
         required: true
     }

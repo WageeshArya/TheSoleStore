@@ -15,7 +15,8 @@ exports.getOrders = (req, res, next) => {
           orderId: doc._id,
           userId: doc.userId,
           productId: doc.productId,
-          quantity: doc.quantity
+          quantity: doc.quantity,
+          createdAt: doc.createdAt
         }
       })]
     }

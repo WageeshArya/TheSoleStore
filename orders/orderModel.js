@@ -16,7 +16,9 @@ const orderModel = mongoose.Schema({
     type: Number,
     default: 1,
     required: true 
-  }
+  },
+},{
+  timestamps: { createdAt: true, updatedAt: false }
 });
 
 module.exports = mongoose.model('Order', orderModel)

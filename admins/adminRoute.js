@@ -55,7 +55,7 @@ router.post('/login', (req, res, next) => {
   Admin.find({email: req.body.email}).exec()
   .then(admin => {
     if(admin.length <1) {
-      return res.status(409).json({
+      return res.status(404).json({
         message: "admin not registered"
       })
     }

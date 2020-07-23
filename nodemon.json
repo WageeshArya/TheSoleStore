@@ -2,6 +2,11 @@
     "env": {
       "MONGODB_ATLAS_PASS": "ttVpp8BhlFjhbJkq",
       "JWT_SECRET_KEY": "rgfadjfhbwuic19129ewfb",
-      "ADMIN_SECRET_KEY": "wrglifdbc2faf3123sdsa"
+      "ADMIN_SECRET_KEY": "wrglifdbc2faf3123sdsa",
+      "AWS_SECRET_ACCESS_KEY": "Ra22WBfgXB77EV6K4vVuFbJvoj7RjkPKkKrtCtL3",
+      "AWS_ACCESS_KEY_ID": "AKIAJSU6LSVEVUXM6UBA",
+      "REGION": "ap-northeast-1",
+      "BUCKET_NAME": "thesolestore",
+      "AWS_URL": "https://s3-ap-northeast-1.amazonaws.com/thesolestore/"
     }
 }
