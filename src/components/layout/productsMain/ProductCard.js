@@ -7,7 +7,7 @@ import './ProductCard.css';
 export const ProductCard = (props) => {
   const [showAddedToCart, setShowAddedToCart] = useState(false);
   const {_id , name, price, company, productImage} = props.product;
-
+  console.log(productImage);
   const atc = () => {
     const prod = {
       _id: _id,
@@ -38,7 +38,7 @@ export const ProductCard = (props) => {
       </div>
       </div>
       <div className="productImage">
-        <Link to={`/shoes/${_id}`}><img src={`http://localhost:5000/${productImage}`} alt="product img"/></Link>
+        <Link to={`/shoes/${_id}`}><img src={productImage} alt="product img"/></Link>
       </div>
       <div className="cardBottom">
         <div> <Link to={`/shoes/${_id}`} className="view">View</Link></div>

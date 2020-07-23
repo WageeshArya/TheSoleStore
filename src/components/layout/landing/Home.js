@@ -4,7 +4,6 @@ import { getProducts, setLoading } from '../../../actions/productsActions';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import './Home.css';
-import shoeGif from './shoeGif.gif';
 import Loading from './Loading';
 import Navbar from './Navbar';
 import ProductSm from './ProductSm';
@@ -53,8 +52,9 @@ export const Home = (props) => {
                 <ProductSm />
             </div>
             <div className="shoeGif">
-              <lottie-player className="gif" src="https://assets7.lottiefiles.com/packages/lf20_S14LiY.json" style={{height: '300px', width: '300px'}} background="#E8F3F1"  speed="1.5" loop autoplay></lottie-player>
-              {/* <img src={shoeGif} alt="gif"/> */}
+              <Link to="/about">
+                <lottie-player className="gif" src="https://assets7.lottiefiles.com/packages/lf20_S14LiY.json" background="#E8F3F1" style={{width: '250px', height: '250px'}} speed="1.5" loop autoplay></lottie-player>
+              </Link>
             </div>
             </div>
         </div>

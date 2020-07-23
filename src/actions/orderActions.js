@@ -14,7 +14,7 @@ export const getOrders = () => async (dispatch, getState) => {
       'authorization': token
     }
   }
-  fetch(`http://localhost:5000/orders/${_id}`, orderData)
+  fetch(`/orders/${_id}`, orderData)
   .then(response => {
     console.log(response);
       response.json().then(data => {
@@ -49,7 +49,7 @@ export const newOrder = (products) => async (dispatch, getState) => {
       body: JSON.stringify(productData)
     }
   
-    fetch(`http://localhost:5000/orders/${_id}`, orderData)
+    fetch(`/orders/${_id}`, orderData)
     .then(response => {
       if(response.ok) {
         response.json()
@@ -85,7 +85,7 @@ export const deleteOrder = (orderId) => async (dispatch, getState) => {
     }
   }
 
-  fetch(`http://localhost:5000/orders/${orderId}`, orderData)
+  fetch(`/orders/${orderId}`, orderData)
   .then(response => {
     if(response.ok) {
       response.json().then(data => {

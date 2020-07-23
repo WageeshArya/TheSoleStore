@@ -221,7 +221,7 @@ export const Admins = (props) => {
           <form className="signup" onSubmit={handleSignupSubmit}>
             <h1 id="signup">Admin Sign up</h1>
             <div>
-              <label htmlFor="email" class={emailErr? 'error': ''}>Email</label>
+              <label htmlFor="email" className={emailErr? 'error': ''}>Email</label>
               <input className="email" onChange={signEmailChange} type="text" name="email" />
             </div>
             <div>

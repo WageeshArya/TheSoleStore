@@ -3,7 +3,7 @@ import {GET_PRODUCTS, GET_PRODUCT, SET_LOADING, SET_ERROR, GET_RESULTS} from './
 export const getProducts = () => async (dispatch) => {
   try{
     setLoading();
-    const res = await fetch('http://localhost:5000/products');
+    const res = await fetch('/products');
     const data = await res.json();
     const productsData = JSON.parse(data.products);
     dispatch({
@@ -30,7 +30,7 @@ export const getSingle = (productId) => async (dispatch) => {
     }
   }
 
-  fetch(`http://localhost:5000/products/${productId}`, productData)
+  fetch(`/products/${productId}`, productData)
   .then(response => {
     console.log(response);
     if(response.ok) {
@@ -74,7 +74,7 @@ export const getSearchResults = (searchTerm, sortBy) => (dispatch) => {
     body: JSON.stringify(productsBody)
   }
 
-  fetch('http://localhost:5000/products/search', productsData)
+  fetch('/products/search', productsData)
   .then(response => {
     if(response.ok) {
       response.json().then(data => {

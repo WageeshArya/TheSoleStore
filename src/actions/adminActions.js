@@ -19,7 +19,7 @@ export const newAdmin = (admin) => async (dispatch) => {
     body: JSON.stringify(admin)
   }
   try{
-    fetch('http://localhost:5000/admin/signup', adminData)
+    fetch('/admin/signup', adminData)
     .then((response) => {
       if(response.ok) {
         response.json().then((data) => {
@@ -27,7 +27,7 @@ export const newAdmin = (admin) => async (dispatch) => {
             type: NEW_ADMIN,
             payload: data
           });
-          fetch('http://localhost:5000/admin/login', adminData)
+          fetch('/admin/login', adminData)
           .then((response) => {
             if(response.ok) {
               response.json()
@@ -62,7 +62,7 @@ export const adminLogin = (admin) => async (dispatch) => {
   }
   try {
     console.log(adminData);
-    fetch('http://localhost:5000/admin/login', adminData)
+    fetch('/admin/login', adminData)
     .then((response) => {
       if(response.ok) {
         response.json()
@@ -108,7 +108,7 @@ export const newProduct = (product) => async (dispatch, getState) => {
   formData.append('productImage', product.productImage);
   formData.append('fullProductImage', product.fullProductImage);
 
-  fetch('http://localhost:5000/products', {
+  fetch('/products', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -135,7 +135,7 @@ export const deleteProduct = (productId) => async (dispatch, getState) => {
   const authToken = getState().admins.authToken;
   const token = `Bearer ${authToken}`;
   console.log(token);
-  fetch(`http://localhost:5000/products/${productId}`, {
+  fetch(`/products/${productId}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',
@@ -184,7 +184,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     }
   ]
 
-  fetch(`http://localhost:5000/products/${product._id}`, {
+  fetch(`/products/${product._id}`, {
     method: 'PATCH',
     headers: {
       Accept: 'application/json',

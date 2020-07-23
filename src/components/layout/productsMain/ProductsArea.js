@@ -10,7 +10,6 @@ export const ProductsArea = ({products, loading}) => {
     )
   }
   else {
-    console.log(products);
     return (
       <div className="productsArea">
         {

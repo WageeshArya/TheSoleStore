@@ -1,4 +1,4 @@
-import { NEW_ADMIN, ADMIN_LOGIN, SET_ADMIN_ERROR, ADMIN_LOGOUT, DUPLICATE_FOUND, RESET_DUPLICATE} from '../actions/types';
+import { NEW_ADMIN, ADMIN_LOGIN, SET_ADMIN_ERROR, ADMIN_NOT_FOUND, ADMIN_LOGOUT, DUPLICATE_FOUND, RESET_DUPLICATE, RESET_ADMIN_ERROR} from '../actions/types';
 const initialState = {
   _id: '',
   email: '',
@@ -19,12 +19,18 @@ export default (state = initialState, action) => {
         email: action.payload.admin[0].email,
         authToken: action.payload.token,
         loggedIn: true,
-        error: null
+        adminErr: null
       }
     case SET_ADMIN_ERROR:
       return {
         ...state,
-        error: action.payload
+        adminErr: action.payload
+      }
+
+    case RESET_ADMIN_ERROR:
+      return {
+        ...state,
+        adminErr: null
       }
 
     case ADMIN_LOGOUT: 
@@ -33,6 +39,13 @@ export default (state = initialState, action) => {
         loggedIn: false,
         authToken: ''
       }
+
+    case ADMIN_NOT_FOUND: 
+      return {
+        ...state,
+        adminErr: true
+      }
+
     case DUPLICATE_FOUND: 
       return {
         ...state,

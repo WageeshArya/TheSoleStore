@@ -10,7 +10,7 @@ export const newUser = (user) => async (dispatch) => {
     body: JSON.stringify(user)
   }
   try{
-    fetch('http://localhost:5000/users/signup', userData)
+    fetch('/users/signup', userData)
     .then((response) => {
       console.log(response);
       if(response.ok) {
@@ -19,7 +19,7 @@ export const newUser = (user) => async (dispatch) => {
             type: NEW_USER,
             payload: data
           });
-          fetch('http://localhost:5000/users/login', userData)
+          fetch('/users/login', userData)
           .then((response) => {
             if(response.ok) {
               response.json()
@@ -58,7 +58,7 @@ export const login = (user) => async (dispatch) => {
   }
   try {
     console.log(userData);
-    fetch('http://localhost:5000/users/login', userData)
+    fetch('/users/login', userData)
     .then((response) => {
       if(response.ok) {
         response.json()

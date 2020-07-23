@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
                     authToken: action.payload.token,
                     loggedIn: true,
                     duplicate: false,
-                    error: null
+                    userErr: null
                   }
     case USER_NOT_FOUND:
                   return {

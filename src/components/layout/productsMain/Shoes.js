@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './Shoes.css';
-// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Loading from '../loading/Loading';
 import { getProducts, setLoading } from '../../../actions/productsActions';
 import ProductsArea from './ProductsArea';
 import Navbar from '../landing/Navbar';
 import Search from './Search';
-import LoginErr from '../error/LoginErr';
 export const Shoes = (props) => {
 
   useEffect(() => {
     props.setLoading();
     props.getProducts();
-
-    console.log(props.products);
-    console.log(props.loading);
-    
   }, []); 
   if(props.loading) {
     return (
@@ -30,7 +24,6 @@ export const Shoes = (props) => {
         <Navbar />
         <div className="shoes">
           <Search />
-          {/* <LoginErr /> */}
           <div className={props.loginErr ? 'showLoginErr' : 'hideLoginErr'}>
             Please log in before adding items to cart
           </div>

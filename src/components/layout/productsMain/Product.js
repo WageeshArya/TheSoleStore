@@ -40,7 +40,7 @@ export const Product = (props) => {
         <img className="bgBlob2" src={bg2} alt="background" />
         <div className="fullProductPgImage">
           <Link className="back" to="/shoes">Go back</Link>
-          <img className="fullImg" src={`http://localhost:5000/${props.product.fullProductImage}`} alt="full product"/>
+          <img className="fullImg" src={props.product.fullProductImage} alt="full product"/>
         </div>
         <div className="details">
           <div className="detailsGrid">
@@ -54,7 +54,7 @@ export const Product = (props) => {
           </div>
           <div className="detailsImg">
             <div>
-              <img src={`http://localhost:5000/${props.product.productImage}`} alt="Product"/>
+              <img src={props.product.productImage} alt="Product"/>
             </div>
           </div>
           <div className="description">

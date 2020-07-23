@@ -41,7 +41,7 @@ export const ProductSm = (props) => {
                     {props.products[random].name}
                   </p>
 
-                  <Link to={`/shoes/${props.products[random]._id}`} className="productImg"><img className="image" src={`http://localhost:5000/${props.products[random].productImage}`} alt="productImage"/></Link>
+                  <Link to={`/shoes/${props.products[random]._id}`} className="productImg"><img className="image" src={props.products[random].productImage} alt="productImage"/></Link>
                 </div>
         }
     </div>

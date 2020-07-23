@@ -181,7 +181,7 @@ export const Dash = (props) => {
       <form onSubmit={createNewProduct} className={showProductForm ? 'adminForm' : 'hideForm' }>
         <span onClick={closeForm} className="closeForm"><img src={cancel} alt="cancel"/></span>
         <label htmlFor="name">Name</label>
-        <input onChange={newNameChange} name="name" type="text"/>
+        <input onChange={newNameChange} required name="name" type="text"/>
         <label htmlFor="company">Company</label>
         <input onChange={newCompanyChange} name="company" type="text"/>
         <label htmlFor="price">Price</label>
@@ -189,7 +189,7 @@ export const Dash = (props) => {
         <label htmlFor="year">Year</label>
         <input onChange={newYearChange} name="year" type="text"/>
         <label htmlFor="description">Description</label>
-        <textarea onChange={newDescChange} name="description" cols="30" rows="10" />
+        <textarea onChange={newDescChange} name="description" />
         <label htmlFor="productImage">Product Image</label>
         <input onChange={newProdImgChange} name="productImage" type="file"/>
         <label htmlFor="fullProductImage">Full Product Image</label>
@@ -210,7 +210,7 @@ export const Dash = (props) => {
         <label htmlFor="year">Year</label>
         <input onChange={updateYearChange} name="year" type="text" value={updatedYear} />
         <label htmlFor="description">Description</label>
-        <textarea onChange={updateDescChange} name="description" cols="30" rows="10" value={updatedDesc} />
+        <textarea onChange={updateDescChange} name="description" value={updatedDesc} />
         <div className="submitNew">
           <input type="submit" value="submit" />
         </div>

@@ -19,7 +19,6 @@ export const Navbar = (props) => {
   const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
-    console.log(props.loggedIn);
     if(props.loggedIn === true) {
       setShowCart(true);
     }
@@ -51,7 +50,7 @@ export const Navbar = (props) => {
                 <ul>
                 <li className={`${props.adminLoggedIn ? 'hideIcon':''} ${props.loggedIn? 'hideIcon': ''}`}><Link to="/admins">Admin Login</Link></li>
                 <li className={props.adminLoggedIn ? '': 'hideIcon'}><Link to="/admins/dash">Admin Dashboard</Link></li>
-                <li><a href="#">About Us</a></li>
+                <li><Link to="/about">About Us</Link></li>
                 <li><a href="https://github.com/WageeshArya">Contact</a></li>
                 </ul>
               </div>
@@ -60,8 +59,8 @@ export const Navbar = (props) => {
               <ul>
                 <li className={`${props.adminLoggedIn ? 'hideIcon':''} ${props.loggedIn? 'hideIcon': ''}`}><Link to="/admins">Admin Login</Link></li>
                 <li className={props.adminLoggedIn ? '': 'hideIcon'}><Link to="/admins/dash">Admin Dashboard</Link></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><Link to="/about">About Us</Link></li>
+                <li><a href="https://github.com/WageeshArya">Contact</a></li>
               </ul>
             </div>
           </div>
