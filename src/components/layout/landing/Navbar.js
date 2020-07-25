@@ -7,7 +7,7 @@ import { logout } from '../../../actions/userActions';
 
 import './Navbar.css';
 import logo from '../../../icons/logo.png';
-import login from '../../../icons/login.png';
+import login from '../../../icons/login2.png';
 import cart from '../../../icons/cart.svg';
 import home from '../../../icons/menu.svg';
 import logoutIcon from '../../../icons/logout.svg';
@@ -47,7 +47,7 @@ export const Navbar = (props) => {
             <div className={homeClicked ? 'extendHomeIcon' : ''}>
               <a href="#"><img src={home} onClick={setClicked} alt=""/></a>
               <div className={homeClicked ? 'mobileExtendClicked' : 'hideIcon'}>
-                <ul>
+                <ul id={props.loggedIn ? 'userNavlinks' : ''}>
                 <li className={`${props.adminLoggedIn ? 'hideIcon':''} ${props.loggedIn? 'hideIcon': ''}`}><Link to="/admins">Admin Login</Link></li>
                 <li className={props.adminLoggedIn ? '': 'hideIcon'}><Link to="/admins/dash">Admin Dashboard</Link></li>
                 <li><Link to="/about">About Us</Link></li>

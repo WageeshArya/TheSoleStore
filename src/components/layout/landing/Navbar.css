@@ -192,6 +192,13 @@
 }
 
 @media (max-width: 1450px) {
+
+  #userNavlinks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.5rem;
+  }
+
   .extendNav {
     width: 100vw;
     text-align: center;

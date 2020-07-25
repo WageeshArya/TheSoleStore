@@ -67,6 +67,7 @@ export default (state = initialState, action) => {
                   decIndex = i;
                   decQty = state.cart[i].quantity - 1;
                   if(decQty === 0) {
+                    console.log(action.payload);
                     delFromCart(action.payload);
                   }
                   else {  
@@ -100,11 +101,16 @@ export default (state = initialState, action) => {
                   total: state.total - action.payload.price
                 } 
               }
+              console.log(delIndex);
+              console.log([
+                ...state.cart.slice(0, delIndex),
+                ...state.cart.slice(delIndex + 1)
+              ])
               
               return {
                 cart: [
-                    ...state.cart.slice(0, delIndex - 1),
-                    ...state.cart.slice(delIndex )
+                  ...state.cart.slice(0, delIndex),
+                  ...state.cart.slice(delIndex + 1)
                 ],
                 total: state.total - ( action.payload.price * action.payload.quantity)
               }

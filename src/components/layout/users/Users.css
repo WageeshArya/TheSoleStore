@@ -7,12 +7,13 @@
 .usersTitle {
   width: 100%;
   text-align: center;
-  font-size: 3rem;
-  line-height: 3rem;
+  font-size: 2.5rem;
   padding-top: 5vh;
+  margin-bottom: 1rem;
 }
 .usersTitle > h1 {
   margin: 0;
+  line-height: 2.25rem;
 }
 .userContainer {
   display: flex;
@@ -25,6 +26,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
+  margin-top: 1.25rem;
 }
 label {
   display: block;
@@ -112,6 +114,7 @@ label {
   font-weight: 600;
   padding: 1rem;
   animation: showLoggedIn 2s ease;
+  z-index: 3;
 }
 
 .hideLoggedIn {
@@ -260,8 +263,8 @@ label {
   }
 }
 
-@media (max-width: 500px) {
-  .usersTitle >h1 {
+@media (max-width: 700px) {
+  .usersTitle > h1 {
     font-size: 2rem;
     margin-bottom: 0;
     line-height: 1.5rem;
@@ -278,6 +281,9 @@ label {
   .usersTitle > h1 {
     font-size: 2rem;
     line-height: 1.25rem;
+  }
+  .usersContainer {
+    width: 75%;
   }
 }
 

@@ -6,6 +6,10 @@
   margin: 0;
 }
 
+.cartContainer {
+  background-color: #D8FFDD;
+}
+
 .cartHeader {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -261,5 +265,17 @@
   }
   .total {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .cartItem {
+    width: 85%;
+  }
+  .cartItem > div > p {
+    font-size: 0.6rem
+  }
+  .cartItem > div {
+    font-size: 0.75rem;
   }
 }

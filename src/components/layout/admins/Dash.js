@@ -197,6 +197,7 @@ export const Dash = (props) => {
         <div className="submitNew">
           <input type="submit" value="submit" />
         </div>
+        <p style={{color: 'red'}}>*Please make sure that the file size is smaller than 1MB</p>
       </form>
 
       <form onSubmit={updateProductItem} className={showUpdateForm ? 'adminForm' : 'hideForm'}>
