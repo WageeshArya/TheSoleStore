@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { getProducts, setLoading } from '../../../actions/productsActions';
 import { connect } from 'react-redux';
@@ -8,59 +8,62 @@ import Loading from './Loading';
 import Navbar from './Navbar';
 import ProductSm from './ProductSm';
 export const Home = (props) => {
+  const [showHome, setShowHome] = useState(false);
   useEffect(() => {
     props.setLoading();
     props.getProducts();
     //eslint-disable-next-line
   }, []); 
-  if(props.loading) {
+  if(props.loading || !showHome) {
+    setTimeout(() => {
+      setShowHome(true);
+    }, 1500);
     return <Loading />
   }
-  else {
-    
-  return (
-      <div>
-        <Navbar />
-        <div className="home">
-          <div className="group-1">
-            <div className="branding">
-              <div className="brandName">
-                The
-                <br/>
-                Sole
-                <br/>
-                Store
+  else {  
+    return (
+        <div>
+          <Navbar />
+          <div className="home">
+            <div className="group-1">
+              <div className="branding">
+                <div className="brandName">
+                  The
+                  <br/>
+                  Sole
+                  <br/>
+                  Store
+                </div>
+                <div>
+                    <p>The finest designs and fits.</p>
+                </div>
               </div>
-              <div>
-                  <p>The finest designs and fits.</p>
+              <div className="viewProducts">
+                <div>
+                  <p>
+                    Check out our latest and greatest models
+                  </p>
+                  <Link className="productsBtn" to="/shoes">GO <i className="fas fa-arrow-right"/></Link>
+                </div>
               </div>
             </div>
-            <div className="viewProducts">
-              <div>
-                <p>
-                  Check out our latest and greatest models
-                </p>
-                <Link className="productsBtn" to="/shoes">GO <i className="fas fa-arrow-right"/></Link>
+            <div className="group-2">
+              <div className="products">
+                  <ProductSm />
+                  <ProductSm />
+                  <ProductSm />
+                  <ProductSm />
               </div>
-            </div>
+              <div className="shoeGif">
+                <Link to="/about">
+                  <lottie-player className="gif" src="https://assets7.lottiefiles.com/packages/lf20_S14LiY.json" background="#E8F3F1" style={{width: '250px', height: '250px'}} speed="1.5" loop autoplay></lottie-player>
+                </Link>
+              </div>
+              </div>
           </div>
-          <div className="group-2">
-            <div className="products">
-                <ProductSm />
-                <ProductSm />
-                <ProductSm />
-                <ProductSm />
-            </div>
-            <div className="shoeGif">
-              <Link to="/about">
-                <lottie-player className="gif" src="https://assets7.lottiefiles.com/packages/lf20_S14LiY.json" background="#E8F3F1" style={{width: '250px', height: '250px'}} speed="1.5" loop autoplay></lottie-player>
-              </Link>
-            </div>
-            </div>
         </div>
-      </div>
-  )
-}
+    )
+  }
 }
 Home.propTypes = {
   products: PropTypes.array.isRequired,
