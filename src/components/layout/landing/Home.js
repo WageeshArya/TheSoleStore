@@ -10,9 +10,15 @@ import ProductSm from './ProductSm';
 export const Home = (props) => {
   const [showHome, setShowHome] = useState(false);
   useEffect(() => {
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
     props.setLoading();
     props.getProducts();
     //eslint-disable-next-line
+    document.body.style.webkitTransform =  'scale(1)';
+    document.body.style.msTransform =   'scale(90)';
+    document.body.style.transform = 'scale(1)';
+    // document.body.style.zoom = screen.logicalXDPI / screen.deviceXDPI;
   }, []); 
   if(props.loading || !showHome) {
     setTimeout(() => {

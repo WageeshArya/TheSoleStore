@@ -57,6 +57,18 @@
     height: 200px;
   }
 }
+@media(max-width: 1450px) {
+  .productSmCompany {
+    font-size: 1rem;
+  }
+  .productSmName {
+    font-size: 0.75rem;
+  }
+  .image {
+    width: 125px;
+    height: 125px;
+  }
+}
 
 @media (max-width: 500px) {
   .product {

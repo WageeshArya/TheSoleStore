@@ -147,7 +147,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1150px) {
   .productFull {
     overflow: visible;
     grid-template-columns: none;

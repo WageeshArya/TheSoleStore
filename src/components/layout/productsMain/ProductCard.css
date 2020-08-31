@@ -151,12 +151,27 @@ img {
   }
 }
 
-@media (max-width: 1470px) {
+@media(max-width: 1450px) {
+  img {
+    width: 175px;
+    height: 175px;
+  }
+}
+@media(max-width: 1550px) {
+  .atc {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 1170px) {
   img {
     width: 150px;
     height: 150px
   }
   h1 {
     line-height: 2rem;
+  }
+  .atc {
+    font-size: 0.75rem;
   }
 }

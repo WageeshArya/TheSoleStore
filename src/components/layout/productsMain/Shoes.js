@@ -11,6 +11,7 @@ export const Shoes = (props) => {
   useEffect(() => {
     props.setLoading();
     props.getProducts();
+    // window.location.reload(false);
   }, []); 
   if(props.loading) {
     return (
@@ -22,14 +23,17 @@ export const Shoes = (props) => {
     return (
       <div>
         <Navbar />
-        <div className="shoes">
-          <Search />
-          <div className={props.loginErr ? 'showLoginErr' : 'hideLoginErr'}>
-            Please log in before adding items to cart
+        <div className="shoesDiv">
+          <div className="shoes">
+            <Search />
+            <div className={props.loginErr ? 'showLoginErr' : 'hideLoginErr'}>
+              Please log in before adding items to cart
+            </div>
+            <h1 className="productsTitle">Our Selection</h1>
+              <ProductsArea loading={props.loading} products={props.searched ? props.searchResults : props.products } /> 
           </div>
-          <h1 className="productsTitle">Our Selection</h1>
-            <ProductsArea loading={props.loading} products={props.searched ? props.searchResults : props.products } /> 
         </div>
+        
       </div>
     )
   }

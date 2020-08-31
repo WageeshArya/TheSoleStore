@@ -7,7 +7,7 @@
   display: grid;
   grid-template-columns: 3fr 1fr 1fr;
   grid-gap: 2rem;
-  padding: 4rem 6rem;
+  padding: 2rem 6rem;
 }
 
 .searchbar {
@@ -68,7 +68,7 @@
   box-shadow: 2px 2px 2px #39b6ab;
 }
 
-@media (max-width: 1450px) {
+@media (max-width: 1150px) {
   .searchgrid {
     padding: 1rem;
     grid-gap: 0.5rem;

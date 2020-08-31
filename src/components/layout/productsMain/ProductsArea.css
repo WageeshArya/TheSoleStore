@@ -1,3 +1,9 @@
+.productsAreaDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .productsArea {
   margin: 6rem;
   display: grid;
@@ -13,7 +19,7 @@
   }
 }
 
-@media (max-width: 1450px) {
+@media (max-width: 1150px) {
   .productsArea{
     width: 100%;
     grid-template-columns: repeat(3,1fr);

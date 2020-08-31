@@ -11,12 +11,14 @@ export const ProductsArea = ({products, loading}) => {
   }
   else {
     return (
-      <div className="productsArea">
-        {
-          products.map(product => (
-            <ProductCard key={product._id} product={product} />
-          ))
-        }
+      <div className="productsAreaDiv">
+        <div className="productsArea">
+          {
+            products.map(product => (
+              <ProductCard key={product._id} product={product} />
+            ))
+          }
+        </div>
       </div>
     )
   }

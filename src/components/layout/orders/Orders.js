@@ -20,10 +20,6 @@ export const Orders = (props) => {
     props.deleteOrder(toDelete);
     setOpenConfirmDel(false);
     setToDelete(null);
-    setDeleted(true);
-    setTimeout(() => {
-      setDeleted(false)
-    },1500);
   }
 
   const confirmDelete = (orderId) => {

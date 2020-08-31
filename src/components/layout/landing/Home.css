@@ -133,7 +133,7 @@ html, body {
 }
 
 /* for 1440p */
-@media(max-width: 2600px)and (min-width: 2000px) {
+@media(max-width: 2600px) and (min-width: 2000px) {
   .branding > div > p {
     font-size: 3rem;
   }
@@ -151,10 +151,26 @@ html, body {
     line-height: 100px;
   }
 }
+@media(max-width: 1450px) {
+  .brandName {
+    font-size: 10rem;
+    line-height: 7rem;
+  }
+  .group-1 {
+    grid-template-rows: 2fr 1fr;
+  }
+  .viewProducts > div > p {
+    font-size: 2rem;
+  }
+  .productsBtn {
+    width: 125px;
+    height: 50px;
+    font-size: 1rem;
+    line-height: 50px;
+  }
+}
 
-@media (max-width: 1450px) {
-  /* .shoeGif {
-  } */
+@media (max-width: 1150px) {
   .home {
     display: block;
     float: bottom;
