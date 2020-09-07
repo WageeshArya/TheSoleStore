@@ -8,13 +8,11 @@ React and Redux used for Front End and fetch API used for data sending and retri
 The website is fully responsive.
 
 Technologies Used: 
-Front End
 1. JSX
 2. CSS
 3. React/Redux
 4. Fetch API
-Back End
-1. NodeJS
-2. ExpressJS
-3. MongoDB
-4. Mongoose
+5. NodeJS
+6. ExpressJS
+7. MongoDB
+8. Mongoose
