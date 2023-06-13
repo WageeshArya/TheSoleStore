@@ -16,6 +16,7 @@ import About from './components/layout/about/About';
 import NotFound from './components/layout/notFound/NotFound';
 export const App = () => {
   return (
+    // TheSoleStore
     <Provider store={store}>
       <Router>
       <div className="App">
